@@ -1,0 +1,235 @@
+  :root{--bg1:#ffe4ec;--bg2:#e3f2ff;--bg3:#eafbe6;--ink:#1f2937;--muted:#475569;--accent:#ff4d6d;--glass:rgba(255,255,255,.68);--radius:18px}
+    *{box-sizing:border-box} html,body{height:100%;-webkit-text-size-adjust:100%}
+    body{margin:0;color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));background-size:200% 200%;animation:bg 18s ease-in-out infinite;overflow-x:hidden;-webkit-tap-highlight-color:transparent;padding-bottom:max(12px,env(safe-area-inset-bottom))}
+    @keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+    .wrap{min-height:100%;display:grid;place-items:center;padding:16px}
+    .card{width:min(720px,100%);background:var(--glass);backdrop-filter:blur(10px) saturate(1.2);border:1px solid rgba(255,255,255,.35);border-radius:var(--radius);box-shadow:0 18px 50px rgba(0,0,0,.12);padding:22px 16px 16px;position:relative;overflow:hidden}
+    h1{margin:0 0 6px;font-weight:800;letter-spacing:.2px;font-size:clamp(24px,7vw,38px)} .sub{margin:0 0 10px;color:var(--muted);font-size:clamp(14px,3.8vw,16px)}
+    .badge{display:inline-flex;gap:8px;align-items:center;font-weight:700;color:#fff;background:var(--accent);padding:6px 10px;border-radius:999px;box-shadow:0 6px 18px rgba(255,77,109,.35)}
+    .btns{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+    .btn{appearance:none;border:0;background:#111;color:#fff;font-weight:700;padding:12px 14px;border-radius:14px;cursor:pointer;box-shadow:0 10px 20px rgba(0,0,0,.15);transition:transform .06s ease}
+    .btn:hover{transform:translateY(-1px)} .btn:active{transform:translateY(1px)} .btn.secondary{background:#fff;color:#111;border:1px solid #e5e5e5}
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:stretch}
+    .col{flex:1 1 280px;background:rgba(255,255,255,.64);border-radius:12px;padding:12px 12px 14px;border:1px solid rgba(0,0,0,.05)}
+    .tag{display:inline-block;font-size:12px;color:#000;background:#fff;padding:4px 8px;border-radius:999px;border:1px solid rgba(0,0,0,.06)}
+    .quotes{min-height:64px;font-size:clamp(15px,4.2vw,18px);font-weight:600}.quotes em{font-style:normal;color:#000}
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .gallery figure{margin:0;aspect-ratio:3/3;background:#fff;border:1px dashed #e5e5e5;border-radius:10px;display:grid;place-items:center;color:#9aa3ad;font-size:14px;}
+    .letter{max-height:16ch;overflow:hidden;transition:max-height .8s ease;white-space:pre-wrap;font-size:clamp(15px,4.2vw,17px)} .letter.open{max-height:1000px} .letter h3{margin:8px 0 0px 0;font-size:clamp(18px,5vw,20px); margin-bottom: 0;}
+    .ribbon{display:grid;gap:10px} .ribbon .hint{font-size:13px;color:#475569}
+    .scroller{display:grid;grid-auto-flow:column;grid-auto-columns:80%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+    .cardlet{scroll-snap-align:center;background:linear-gradient(135deg,#fff,#ffe9f1);border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:14px;box-shadow:0 6px 20px rgba(255,77,109,.15)}
+    .cardlet h4{margin:0 0 6px;font-size:clamp(16px,4.5vw,18px)} .cardlet p{margin:0;font-size:clamp(14px,4vw,16px);color:#374151}
+    .badge-rose{font-size:12px;display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:999px;padding:4px 8px;margin-bottom:6px}
+    .footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;margin-top:10px;color:#334155;font-size:13px}
+    .tiny{opacity:.75}
+    canvas#fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .gallery{
+  --gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--gap);
+}
+
+.gallery{
+  --radius: 18px;
+  --shadow: 0 10px 28px rgba(0,0,0,.14);
+  --gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr;      
+  gap: var(--gap);
+}
+
+.gallery figure{
+  margin: 0;
+  position: relative;
+  aspect-ratio: 3 / 3;             
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: var(--shadow);
+  transform: translateZ(0);
+}
+
+.gallery img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  filter: contrast(1.04) saturate(1.08);
+  transform: scale(1.015);
+  transition: transform .35s ease, filter .35s ease, box-shadow .35s ease;
+  will-change: transform;
+}
+
+.gallery figure::before{
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(140% 120% at 12% 0%, rgba(255,255,255,.55), transparent 45%),
+    radial-gradient(120% 90% at 85% 100%, rgba(0,0,0,.06), transparent 40%);
+  pointer-events: none;
+}
+
+.gallery figure:hover img,
+.gallery figure:focus-within img{
+  transform: scale(1.06);
+  filter: contrast(1.08) saturate(1.12);
+}
+
+@media (min-width: 680px){
+  .gallery{ grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+}
+
+.btn.tab.active{ background:#111; color:#fff; }
+.tab-panel{
+  margin-top:10px;
+  background: rgba(255,255,255,.72);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.10);
+  padding:12px 14px;
+  animation: tabFade .35s ease;
+}
+@keyframes tabFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+.angel-title{margin:0 0 6px; font-size:clamp(16px,4.6vw,18px); text-align:center; color:#0f172a}
+.angel-text{margin:8px auto 30px; color:#334155; font-size:clamp(14px,4vw,16px); text-align:center}
+.angel-quote{
+  margin:10px auto 2px; padding:10px 12px; max-width:36ch; text-align:center;
+  color:#0f172a; font-weight:600; background:linear-gradient(180deg,#fff,#f8fafc);
+  border:1px solid rgba(0,0,0,.05); border-radius:12px;
+}
+
+/* Angel portrait with halo & wings (from earlier) */
+.angel-portrait{ --size:132px; position:relative; width:var(--size); height:var(--size);
+  margin:8px auto 6px; border-radius:50%; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,.18);
+  animation: angel-float 5s ease-in-out infinite; }
+.angel-portrait::before{
+  content:""; position:absolute; inset:-8%; border-radius:50%;
+  background: radial-gradient(circle at 50% 40%, rgba(255,220,120,.45), transparent 55%),
+              radial-gradient(circle at 50% 50%, rgba(255,255,255,.55), transparent 70%);
+  mix-blend-mode: screen; pointer-events:none; animation: angel-breathe 4s ease-in-out infinite;
+}
+.angel-portrait::after{
+  content:""; position:absolute; inset:0; border-radius:50%;
+  box-shadow: inset 0 0 0 2px rgba(255,240,200,.85), inset 0 0 22px rgba(255,205,120,.5);
+}
+.angel-portrait img{ width:100%; height:100%; object-fit:contain; object-position:center;
+  transform:scale(1.02); filter:contrast(1.04) saturate(1.08); }
+.angel-portrait .wing{
+  position:absolute; top:22%; width:120px; height:80px; opacity:.75;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.08));
+  background: radial-gradient(130% 100% at 15% 40%, rgba(255,255,255,.95), transparent 55%),
+              repeating-conic-gradient(from 0deg, rgba(255,255,255,.85) 0 10deg, rgba(255,255,255,0) 11deg 16deg);
+  mask-image: radial-gradient(120% 95% at 50% 50%, #000 55%, transparent 75%);
+  border-radius:60% 40% 60% 40%; pointer-events:none;
+}
+.angel-portrait .wing-l{ right:calc(100% - 16px); transform:rotate(-10deg) scaleX(-1); }
+.angel-portrait .wing-r{ left: calc(100% - 16px); transform:rotate(10deg); }
+
+@keyframes angel-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes angel-breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.06)}}
+
+@media (max-width:420px){
+  .angel-portrait{ --size:118px; }
+  .angel-portrait .wing{ width:104px; height:70px; }
+}
+
+.angel-candle{
+  --h: 54px;
+  position: relative;
+  width: 28px; height: var(--h);
+  margin: 8px auto 2px;
+  background: linear-gradient(#f8fafc,#e2e8f0);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 6px;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,.06);
+}
+.angel-candle .wick{
+  position:absolute; left:50%; top:-6px; width:2px; height:8px;
+  transform:translateX(-50%);
+  background:#0f172a; border-radius:2px;
+}
+.angel-candle .flame{
+  position:absolute; left:50%; top:-22px;
+  width:12px; height:18px; transform:translateX(-50%);
+  background: radial-gradient(ellipse at 40% 30%, #fff6, transparent 60%),
+              radial-gradient(ellipse at 50% 60%, #ffd166, #ff6b6b 60%);
+  border-radius: 10px 10px 10px 10px/14px 14px 8px 8px;
+  animation: flick 1.4s ease-in-out infinite;
+  filter: blur(.2px);
+}
+.angel-candle .glow{
+  position:absolute; left:50%; top:-36px;
+  width:70px; height:70px; transform:translateX(-50%);
+  background: radial-gradient(circle, rgba(255,214,102,.35), transparent 70%);
+  border-radius:50%; pointer-events:none; animation: breathe 3s ease-in-out infinite;
+}
+@keyframes flick{
+  0%,100%{ transform:translateX(-50%) scale(1); filter:blur(.2px);}
+  50%{ transform:translateX(calc(-50% + 1px)) scale(1.06); filter:blur(.3px);}
+}
+@keyframes breathe{
+  0%,100%{ opacity:.55; transform:translateX(-50%) scale(1); }
+  50%{ opacity:.85; transform:translateX(-50%) scale(1.08); }
+}
+
+.angel-petals{
+  position: relative;
+  height: 90px;
+  margin: 6px auto 4px;
+  pointer-events: none;
+  overflow: visible;
+}
+.angel-petals .petal{
+  --x: 0;
+  --s: 1;
+  --dur: 8s;
+  --delay: 0s;
+  position: absolute;
+  left: 50%; bottom: -8px;
+  width: 12px; height: 18px;
+  transform: translateX(calc(var(--x) * 1px)) scale(var(--s));
+
+  background:
+    radial-gradient(70% 60% at 50% 45%, rgba(255,255,255,.45) 0 60%, transparent 61%),
+    radial-gradient(90% 90% at 50% 80%, #fecdd3, #fda4af 70%);
+  border-radius: 10px 10px 12px 12px / 14px 14px 8px 8px;
+
+  border: 1px solid rgba(225, 29, 72, .22);      /* rose-600 */
+  box-shadow: 0 6px 14px rgba(244, 63, 94, .18);  /* մեղմ վարդագույն ստվեր */
+  opacity: .98;
+  filter: blur(.15px);
+  animation: petalUp var(--dur) ease-in forwards;
+  animation-delay: var(--delay);
+}
+
+.angel-petals::after{
+  content:"";
+  position:absolute; inset:-6px -10px -2px -10px;
+  background: radial-gradient(60% 120% at 50% 100%, rgba(255,182,193,.18), transparent 72%);
+  pointer-events:none;
+}
+
+@keyframes petalUp{
+  0%   { transform: translateX(calc(var(--x) * 1px)) translateY(0)    rotate(0deg)    scale(var(--s)); opacity:.0; }
+  6%   { opacity:.9; }
+  50%  { transform: translateX(calc(var(--x) * 1px + 12px)) translateY(-60px) rotate(12deg) scale(var(--s)); }
+  100% { transform: translateX(calc(var(--x) * 1px + 24px)) translateY(-120px) rotate(22deg) scale(var(--s)); opacity:.0; }
+}
+
+.angel-whisper{
+  margin: 6px auto 2px;
+  text-align: center;
+  color: #475569;
+  font-size: 14px;
+  font-style: italic;
+  min-height: 1.6em;
+  opacity: .9;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .angel-petals .petal{ animation: none; opacity: .25; }
+}
