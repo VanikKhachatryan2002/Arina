@@ -114,3 +114,26 @@
     }
 })();
   
+function heart() {
+ const heart = document.getElementById("loveHeart");
+      const heart_container = document.getElementById("pageHearts");
+      console.log(heart)
+    heart.addEventListener("click", () => {
+      for (let i = 0; i < 12; i++) {
+        const smallHeart = document.createElement("div");
+        smallHeart.classList.add("love-floating");
+        smallHeart.innerHTML = ["❤️","💖","💕","💞","🌹"][Math.floor(Math.random()*5)];
+        
+        smallHeart.style.left = Math.random() * window.innerWidth + "px";
+        smallHeart.style.top = Math.random() * window.innerHeight + "px";
+        smallHeart.style.setProperty("--randX", Math.random());
+
+        heart_container.appendChild(smallHeart);
+
+        setTimeout(() => smallHeart.remove(), 6000);
+      }
+    });
+}
+
+heart()
+     
