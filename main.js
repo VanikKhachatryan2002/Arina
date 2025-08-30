@@ -115,9 +115,9 @@
 })();
   
 function heart() {
- const heart = document.getElementById("loveHeart");
-      const heart_container = document.getElementById("pageHearts");
-      console.log(heart)
+    const heart = document.getElementById("loveHeart");
+    const heart_container = document.getElementById("pageHearts");
+    
     heart.addEventListener("click", () => {
       for (let i = 0; i < 12; i++) {
         const smallHeart = document.createElement("div");
