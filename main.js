@@ -33,17 +33,39 @@
     btn.setAttribute('aria-expanded','true');
     panel.scrollIntoView({behavior:'smooth', block:'nearest'});
   }
+
+   function getMoscowYMD(d = new Date()){
+    const parts = new Intl.DateTimeFormat('ru-RU', {
+      timeZone: 'Europe/Moscow',
+      year: 'numeric', month: 'numeric', day: 'numeric'
+    }).formatToParts(d);
+    const y = +parts.find(p=>p.type==='year').value;
+    const m = +parts.find(p=>p.type==='month').value;
+    const day = +parts.find(p=>p.type==='day').value;
+    return { y, m, d: day };
+  }
+  function shouldShowButtonByMoscow(){
+    const { m, d } = getMoscowYMD();
+    return (m > 9) || (m === 9 && d >= 2);
+  }
+
+  function updateAngelButton(){
+    if (shouldShowButtonByMoscow()){
+      btn.style.display = '';     
+    } else {
+      btn.style.display = 'none';
+      closePanelIfOpen();
+    }
+  }
+
   function closePanel(){
     panel.hidden = true;
-    btn.classList.remove('active');
+    btn.classList.remove('active'); 
     btn.setAttribute('aria-expanded','false');
   }
   btn.addEventListener('click', ()=> panel.hidden ? openPanel() : closePanel());
 
-  const now = new Date();
-  if(now.getDate() === 2 && now.getMonth() === 8){ // 8 = September
-    openPanel();
-  }
+  updateAngelButton();
 
     function openPanel(){
         panel.hidden = false;
