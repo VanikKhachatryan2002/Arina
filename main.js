@@ -54,7 +54,6 @@
       btn.style.display = '';     
     } else {
       btn.style.display = 'none';
-      closePanelIfOpen();
     }
   }
 
