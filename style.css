@@ -241,7 +241,7 @@
   position: relative;
   transform: rotate(-45deg);
   animation: pulse 1s infinite;
-  margin: 30px auto;
+  margin: 60px auto;
   cursor: pointer;
   z-index: 10;
 }
