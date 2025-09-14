@@ -34,29 +34,6 @@
     panel.scrollIntoView({behavior:'smooth', block:'nearest'});
   }
 
-   function getMoscowYMD(d = new Date()){
-    const parts = new Intl.DateTimeFormat('ru-RU', {
-      timeZone: 'Europe/Moscow',
-      year: 'numeric', month: 'numeric', day: 'numeric'
-    }).formatToParts(d);
-    const y = +parts.find(p=>p.type==='year').value;
-    const m = +parts.find(p=>p.type==='month').value;
-    const day = +parts.find(p=>p.type==='day').value;
-    return { y, m, d: day };
-  }
-  function shouldShowButtonByMoscow(){
-    const { m, d } = getMoscowYMD();
-    return (m > 9) || (m === 9 && d >= 2);
-  }
-
-  function updateAngelButton(){
-    if (shouldShowButtonByMoscow()){
-      btn.style.display = '';     
-    } else {
-      btn.style.display = 'none';
-    }
-  }
-
   function closePanel(){
     panel.hidden = true;
     btn.classList.remove('active'); 
