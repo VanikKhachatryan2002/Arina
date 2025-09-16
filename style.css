@@ -102,7 +102,6 @@
   border:1px solid rgba(0,0,0,.05); border-radius:12px;
 }
 
-/* Angel portrait with halo & wings (from earlier) */
 .angel-portrait{ --size:132px; position:relative; width:var(--size); height:var(--size);
   margin:8px auto 6px; border-radius:50%; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,.18);
   animation: angel-float 5s ease-in-out infinite; }
@@ -303,4 +302,50 @@
     transform: translate(calc(-100px + 100vw * var(--randX)), -100vh) scale(0.8);
     opacity: 0;
   }
+}
+
+
+.sorry-panel{ background:rgba(255,255,255,.78); }
+.sorry-title{ margin:0 0 6px; text-align:center; color:#0f172a; font-size:clamp(16px,4.6vw,18px) }
+.sorry-text{ margin:8px auto 10px; text-align:center; color:#334155; font-size:clamp(14px,4vw,16px); max-width:44ch }
+.sorry-text .soft-note{ opacity:.75; font-style:italic }
+.sorry-small{ margin:6px 0 0; text-align:center; color:#64748b; font-size:12px }
+
+.heart-stitch{ display:grid; place-items:center; margin:72px 0 2px }
+.heart-svg{ width:140px; height:auto; overflow:visible }
+.heart{ fill:#ff8fab; filter: drop-shadow(0 6px 14px rgba(255,77,109,.22)); }
+.crack{ fill:none; stroke:#7f1d1d; stroke-width:2.5; stroke-linejoin:round; }
+.stitch{
+  fill:none; stroke:#111; stroke-width:2.5; stroke-linecap:round;
+  stroke-dasharray: 6 8; stroke-dashoffset: 200; opacity:.0;
+  transition: opacity .2s ease;
+}
+.stitch.sew{
+  animation: sew 2.8s ease forwards;
+  opacity:1;
+}
+@keyframes sew{
+  from{ stroke-dashoffset: 200; }
+  to  { stroke-dashoffset: 0; }
+}
+
+.promises{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:8px }
+.promise{
+  appearance:none; border:1px solid rgba(0,0,0,.06); background:#fff; color:#0f172a;
+  border-radius:999px; padding:10px 12px; font-weight:700; cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition: transform .1s ease, box-shadow .2s ease, background .2s;
+}
+.promise:active{ transform: translateY(1px); }
+.promise.open{
+  background:linear-gradient(180deg,#fff,#ffe4ec);
+  box-shadow:0 10px 26px rgba(255,77,109,.18);
+}
+.promise.open::after{
+  content: attr(data-text);
+  display:block; margin-top:6px; font-weight:600;
+  color:#334155; font-size:14px; max-width:40ch; text-align:left;
+}
+@media (max-width:460px){
+  .promise::after{ text-align:center; }
 }

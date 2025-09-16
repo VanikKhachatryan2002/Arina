@@ -41,8 +41,6 @@
   }
   btn.addEventListener('click', ()=> panel.hidden ? openPanel() : closePanel());
 
-  updateAngelButton();
-
     function openPanel(){
         panel.hidden = false;
         btn.classList.add('active');
@@ -112,6 +110,8 @@
     }
 })();
   
+heart()
+
 function heart() {
     const heart = document.getElementById("loveHeart");
     const heart_container = document.getElementById("pageHearts");
@@ -133,6 +133,41 @@ function heart() {
     });
 }
 
+(function(){
+  const btn = document.getElementById('sorryTab');
+  const panel = document.getElementById('sorryPanel');
+  if(!btn || !panel) return;
 
-heart()
-     
+  const stitch = panel.querySelector('.stitch');
+  const promisesBox = panel.querySelector('#promises');
+  let animatedOnce = false;
+
+  function openPanel(){
+    panel.hidden = false;
+    btn.classList.add('active');
+    btn.setAttribute('aria-expanded','true');
+
+    if (!animatedOnce && stitch){
+      stitch.classList.add('sew');
+      animatedOnce = true;
+    }
+    if (promisesBox){
+      const items = [...promisesBox.querySelectorAll('.promise')];
+      items.slice(0,3).forEach((el, i)=> setTimeout(()=> el.classList.add('open'), 500 + i*450));
+    }
+
+    panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+  function closePanel(){
+    panel.hidden = true;
+    btn.classList.remove('active');
+    btn.setAttribute('aria-expanded','false');
+  }
+  btn.addEventListener('click', ()=> panel.hidden ? openPanel() : closePanel());
+
+  promisesBox?.addEventListener('click', (e)=>{
+    const p = e.target.closest('.promise');
+    if(!p) return;
+    p.classList.toggle('open');
+  });
+})();
