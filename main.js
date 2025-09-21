@@ -171,3 +171,16 @@ function heart() {
     p.classList.toggle('open');
   });
 })();
+
+(function(){
+  const card = document.getElementById('flipCard');
+  if(!card) return;
+  const toggle = () => {
+    const on = card.classList.toggle('flipped');
+    card.setAttribute('aria-expanded', on ? 'true' : 'false');
+  };
+  card.addEventListener('click', toggle);
+  card.addEventListener('keydown', e=>{
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+  });
+})();

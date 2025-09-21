@@ -320,7 +320,7 @@
   stroke-dasharray: 6 8; stroke-dashoffset: 200; opacity:.0;
   transition: opacity .2s ease;
 }
-.stitch.sew{
+.stitch.sew{  
   animation: sew 2.8s ease forwards;
   opacity:1;
 }
@@ -349,3 +349,34 @@
 @media (max-width:460px){
   .promise::after{ text-align:center; }
 }
+
+/* Flip card */
+.flip-card{ display:grid; place-items:center; margin:12px 0; }
+.flip-inner{
+  position:relative; width:min(420px, 100%); aspect-ratio: 2 / 3;
+  transform-style: preserve-3d; transition: transform .7s ease;
+  cursor:pointer; border-radius:16px;
+}
+.flip-inner:focus{ outline:none; box-shadow:0 0 0 3px rgba(255,77,109,.35); }
+.flip-inner.flipped{ transform: rotateY(180deg); }
+
+.flip-face{
+  position:absolute; inset:0; backface-visibility: hidden;
+  border-radius:16px; overflow:hidden; box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+.flip-front img{ width:100%; height:100%; object-fit: cover; display:block; }
+.flip-front .hint{
+  position:absolute; bottom:8px; right:10px;
+  background:rgba(0,0,0,.45); color:#fff; font-size:12px;
+  padding:4px 8px; border-radius:999px;
+}
+
+.flip-back{
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg,#ffffff,#ffe9f1);
+  padding:16px; display:flex; align-items:center; justify-content:center;
+}
+.back-content{ max-width:92%; color:#1f2937; text-align:left; }
+.back-content h3{ margin:0 0 8px; font-size:clamp(18px,5vw,22px); }
+.back-content p{ margin:0 0 10px; font-size:clamp(14px,4vw,16px); line-height:1.6; color:#334155; }
+.back-content .sig{ margin-top:6px; font-weight:700; }
