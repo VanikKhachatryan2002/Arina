@@ -1,1 +1,152 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='#fff'/><path d='M20 25c0-5 4-9 9-9 3 0 6 2 7 4 1-2 4-4 7-4 5 0 9 4 9 9 0 11-16 20-16 20S20 36 20 25z' fill='#ff4d6d'/><circle cx='48' cy='20' r='6' fill='#ff8fab'/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1620" viewBox="0 0 1080 1620">
+  <defs>
+    <!-- Colors you can tweak -->
+    <style>
+      :root{
+        --bg-start:#4a2d78;      /* top purple */
+        --bg-end:#f2a17c;        /* bottom peach */
+        --heart:#ffa85f;         /* neon heart / glow core */
+        --heart-outer:#ffce93;   /* warm outer glow */
+        --text:#ffd8aa;          /* names color */
+        --rose:#f09;             /* subtle rose accents (simplified) */
+        --silhouette:#3c2f47;    /* couple silhouettes */
+        --stars:#ffd8aa;         /* star color */
+      }
+    </style>
+
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="var(--bg-start)"/>
+      <stop offset="100%" stop-color="var(--bg-end)"/>
+    </linearGradient>
+
+    <!-- Soft outer glow -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Stronger neon glow -->
+    <filter id="neon" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="b1"/>
+      <feColorMatrix in="b1" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 15 -7"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Tiny twinkle star symbol -->
+    <symbol id="twinkle" viewBox="-20 -20 40 40">
+      <path d="M0,-14 L3,-3 L14,0 L3,3 L0,14 L-3,3 L-14,0 L-3,-3 Z"
+            fill="var(--stars)"/>
+    </symbol>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+
+  <!-- Glow wash behind heart -->
+  <ellipse cx="540" cy="650" rx="430" ry="330" fill="var(--heart-outer)" opacity="0.18" filter="url(#softGlow)"/>
+
+  <!-- Heart outline (neon) -->
+  <!-- This path draws a symmetric heart around the center -->
+  <g filter="url(#neon)">
+    <path d="
+      M 540 330
+      C 420 220, 220 260, 220 440
+      C 220 620, 380 690, 540 810
+      C 700 690, 860 620, 860 440
+      C 860 260, 660 220, 540 330
+      Z"
+      fill="none" stroke="var(--heart)" stroke-width="20" />
+  </g>
+
+  <!-- Names inside the heart -->
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle" fill="var(--text)">
+    <!-- You can swap the font to a cursive web font in HTML if you prefer (e.g., Great Vibes). -->
+    <text x="540" y="520" font-size="120" style="letter-spacing:1px;" filter="url(#neon)">Vanik</text>
+    <text x="540" y="620" font-size="120" style="letter-spacing:1px;" filter="url(#neon)">Arina</text>
+  </g>
+
+  <!-- Small heart under names (top of bottom point) -->
+  <g transform="translate(540,690)" filter="url(#neon)">
+    <path d="M0,35
+             C-20,10 -55,15 -55,45
+             C-55,70 -30,85 0,110
+             C30,85 55,70 55,45
+             C55,15 20,10 0,35 Z"
+          fill="var(--heart)" opacity="0.85"/>
+  </g>
+
+  <!-- Hugging silhouettes (faceless, small, inside bottom of the heart) -->
+  <g transform="translate(540,860) scale(0.9)">
+    <!-- Left person -->
+    <path d="
+      M -120,120
+      c 0,-60 45,-110 105,-110
+      c 20,0 40,6 56,17
+      c -25,-3 -48,10 -65,30
+      c -24,29 -29,71 -29,95
+      l 0,40
+      c -26,-8 -67,-26 -67,-72 z"
+      fill="var(--silhouette)" opacity="0.98"/>
+    <circle cx="-18" cy="-10" r="36" fill="var(--silhouette)"/>
+
+    <!-- Right person -->
+    <path d="
+      M 120,120
+      c 0,-60 -45,-110 -105,-110
+      c -18,0 -36,5 -51,14
+      c 23,-2 44,8 61,26
+      c 26,27 33,67 33,100
+      l 0,35
+      c 28,-8 62,-30 62,-65 z"
+      fill="var(--silhouette)" opacity="0.98"/>
+    <circle cx="15" cy="-6" r="34" fill="var(--silhouette)"/>
+
+    <!-- Arms Interlock (front tight hug) -->
+    <path d="M -55,60
+             C -20,55, 10,55, 45,60
+             C 30,85, 5,110, -15,120
+             C -35,110, -52,88, -55,60 Z"
+          fill="var(--silhouette)" opacity="0.98"/>
+  </g>
+
+  <!-- Stars (sprinkled) -->
+  <use href="#twinkle" x="210" y="320" width="30" height="30" opacity="0.9"/>
+  <use href="#twinkle" x="870" y="350" width="42" height="42" opacity="0.9"/>
+  <use href="#twinkle" x="190" y="740" width="26" height="26" opacity="0.8"/>
+  <use href="#twinkle" x="905" y="710" width="28" height="28" opacity="0.8"/>
+  <use href="#twinkle" x="300" y="980" width="22" height="22" opacity="0.75"/>
+  <use href="#twinkle" x="810" y="1020" width="22" height="22" opacity="0.75"/>
+
+  <!-- Simplified rose accents (stylized, light to keep SVG tidy) -->
+  <g opacity="0.35">
+    <g transform="translate(150,460) scale(1.05)">
+      <circle cx="0" cy="0" r="60" fill="var(--rose)" filter="url(#softGlow)"/>
+      <ellipse cx="-40" cy="80" rx="18" ry="50" fill="#6a7f50"/>
+      <ellipse cx="-10" cy="120" rx="18" ry="60" fill="#6a7f50"/>
+    </g>
+    <g transform="translate(930,470) scale(0.95)">
+      <circle cx="0" cy="0" r="60" fill="var(--rose)" filter="url(#softGlow)"/>
+      <ellipse cx="40" cy="80" rx="18" ry="50" fill="#6a7f50"/>
+      <ellipse cx="10" cy="120" rx="18" ry="60" fill="#6a7f50"/>
+    </g>
+    <g transform="translate(230,1180) scale(0.9)">
+      <circle cx="0" cy="0" r="55" fill="var(--rose)" filter="url(#softGlow)"/>
+      <ellipse cx="-25" cy="65" rx="16" ry="45" fill="#6a7f50"/>
+    </g>
+    <g transform="translate(850,1200) scale(1)">
+      <circle cx="0" cy="0" r="65" fill="var(--rose)" filter="url(#softGlow)"/>
+      <ellipse cx="25" cy="75" rx="18" ry="48" fill="#6a7f50"/>
+    </g>
+  </g>
+</svg>
