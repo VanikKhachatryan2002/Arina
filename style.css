@@ -406,3 +406,11 @@
   border-radius:12px; padding:10px 12px; text-align:center; animation: fadeIn .45s ease; }
 .surprise h4{ margin:0 0 6px; }
 @keyframes fadeIn{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)} }
+
+/* —— LITE / PERFORMANCE MODE —— */
+.lite body{ animation:none; } /* stop animated gradient */
+.lite .card{ backdrop-filter:none; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
+.lite .gallery img{ filter:none; transform:none; transition:none; }
+.lite .flip-inner{ transition:transform .45s ease; }
+.lite .angel-petals .petal{ box-shadow:none; filter:none; }
+.lite .heart{ animation:pulse 1.4s infinite; } /* gentler pulse */
