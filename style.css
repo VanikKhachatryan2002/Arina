@@ -380,3 +380,29 @@
 .back-content h3{ margin:0 0 8px; font-size:clamp(18px,5vw,22px); }
 .back-content p{ margin:0 0 10px; font-size:clamp(14px,4vw,16px); line-height:1.6; color:#334155; }
 .back-content .sig{ margin-top:6px; font-weight:700; }
+
+
+.bouquet{ margin:12px 0; background:rgba(255,255,255,.72); border:1px solid rgba(0,0,0,.06);
+  border-radius:16px; padding:12px; box-shadow:0 14px 34px rgba(0,0,0,.10); }
+.bouquet-head{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.progress{ font-size:13px; color:#475569; }
+.buds{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:8px; }
+.bud{
+  appearance:none; border:1px solid rgba(0,0,0,.06); background:#fff; border-radius:14px;
+  padding:10px 12px; font-size:20px; cursor:pointer; transition:transform .08s ease, box-shadow .2s ease;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+.bud:active{ transform:translateY(1px) scale(.98); }
+.bud.open{ background:linear-gradient(180deg,#fff,#ffe4ec); box-shadow:0 12px 28px rgba(255,77,109,.18); }
+.bud.open::after{
+  content: attr(data-text);
+  display:block; margin-top:6px; font-size:14px; color:#334155; font-weight:600;
+  max-width:42ch; text-align:left;
+}
+@media (max-width:460px){ .bud.open::after{ text-align:center; } }
+
+.petal-note{ margin-top:6px; text-align:center; color:#64748b; font-size:13px; min-height:1.4em; }
+.surprise{ margin-top:10px; background:linear-gradient(180deg,#fff,#ffe9f1); border:1px solid rgba(0,0,0,.06);
+  border-radius:12px; padding:10px 12px; text-align:center; animation: fadeIn .45s ease; }
+.surprise h4{ margin:0 0 6px; }
+@keyframes fadeIn{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)} }

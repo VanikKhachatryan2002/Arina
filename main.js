@@ -184,3 +184,42 @@ function heart() {
     if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
   });
 })();
+
+
+(function(){
+  const wrap = document.getElementById('bouquet');
+  if(!wrap) return;
+  const buds = [...wrap.querySelectorAll('.bud')];
+  const counter = wrap.querySelector('#bqCount');
+  const note = wrap.querySelector('#bqNote');
+  const done = wrap.querySelector('#bqDone');
+  let opened = 0;
+
+  function update(){
+    counter.textContent = opened;
+    if(opened === buds.length){
+      note.textContent = 'Букет готов — открой сюрприз ниже 💗';
+      done.hidden = false;
+      try {
+        if (typeof mode !== 'undefined' && typeof ensureLoop === 'function') {
+          const prev = mode; mode = 'hearts'; ensureLoop();
+          setTimeout(()=>{ mode = prev; }, 3000);
+        }
+      } catch {}
+    }
+  }
+
+  buds.forEach(b=>{
+    b.addEventListener('click', ()=>{
+      if(!b.classList.contains('open')){
+        b.classList.add('open');
+        opened++; update();
+        note.textContent = 'Ещё немножко — букет распускается…';
+      } else {
+        b.classList.toggle('open');
+      }
+    }, { passive:true });
+  });
+
+  update();
+})();
