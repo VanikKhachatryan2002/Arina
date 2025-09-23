@@ -58,24 +58,64 @@
       
       </section>
       <section class="flip-card" aria-label="Открытка для Арины">
-        <div class="flip-inner" id="flipCard" role="button" tabindex="0"
-            aria-expanded="false" aria-label="Повернуть открытку">
-          <div class="flip-face flip-front">
-            <img src="photos/vanik-arina-card.webp" alt="Vanik ♥ Arina — розы и сердце">
-            <span class="hint">Нажми, чтобы перевернуть</span>
-          </div>
-          <div class="flip-face flip-back">
-           <div class="back-content">
-              <h3>Дорогая Арина</h3>
-              <p>Ты — самый драгоценный дар моей судьбы, сокровище, которое я никогда не отпущу.</p>
-              <p>Твоя любовь — дыхание моей души, сила, что ведёт меня сквозь тьму к свету.</p>
-              <p>Рядом с тобой моя жизнь превращается в сад смысла, где каждое утро расцветает необыкновенная красота.</p>
-              <p>С тобой жизнь полна смысла и сияет бесконечной красотой.</p>
-              <p class="sig">Люблю тебя бесконечно. Твой Ваник.</p>
+          <div class="flip-inner" id="flipCard" role="button" tabindex="0"
+              aria-expanded="false" aria-label="Повернуть открытку">
+            <div class="flip-face flip-front">
+              <img src="photos/vanik-arina-card.webp" alt="Vanik ♥ Arina — розы и сердце">
+              <span class="hint">Нажми, чтобы перевернуть</span>
+            </div>
+            <div class="flip-face flip-back">
+            <div class="back-content">
+                <h3>Дорогая Арина</h3>
+                <p>Ты — самый драгоценный дар моей судьбы, сокровище, которое я никогда не отпущу.</p>
+                <p>Твоя любовь — дыхание моей души, сила, что ведёт меня сквозь тьму к свету.</p>
+                <p>Рядом с тобой моя жизнь превращается в сад смысла, где каждое утро расцветает необыкновенная красота.</p>
+                <p>С тобой жизнь полна смысла и сияет бесконечной красотой.</p>
+                <p class="sig">Люблю тебя бесконечно. Твой Ваник.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+        <section class="poem" id="poem">
+    <div class="poem-head">
+      <div class="tag">Вселенная моей любви</div>
+      <div class="poem-ctrl">
+        <button class="btn secondary" id="poemPlay" aria-pressed="false">▶️ Автопрогон</button>
+        <button class="btn secondary" id="poemNext">Дальше</button>
+      </div>
+    </div>
+
+    <!-- Основной дисплей строки -->
+    <div class="poem-display" id="poemDisplay" aria-live="polite">
+      Знаешь, как я тебя люблю?
+    </div>
+
+    <!-- Сетка чипсов-метафор -->
+    <div class="poem-grid" id="poemGrid">
+      <button class="chip" data-key="sun"   data-text="Как солнце — ты озаряешь мои дни, даришь тепло и жизнь.">☀️<span>Солнце</span></button>
+      <button class="chip" data-key="moon"  data-text="Как луна — ты моё ночное сияние, нежное и вечное.">🌙<span>Луна</span></button>
+      <button class="chip" data-key="stars" data-text="Как звёзды — ты мои бесчисленные путеводные огни, что ведут меня в темноте.">✨<span>Звёзды</span></button>
+      <button class="chip" data-key="sea"   data-text="Как море — моя любовь к тебе глубока, безмерна и вечно волнуется.">🌊<span>Море</span></button>
+      <button class="chip" data-key="sky"   data-text="Как небо — широкая и светлая, там летают наши мечты.">☁️<span>Небо</span></button>
+      <button class="chip" data-key="flower" data-text="Как цветок — ты распускаешься в моём мире, наполняя дни ароматом.">🌸<span>Цветок</span></button>
+      <button class="chip" data-key="newborn" data-text="Как новорождённый — ты приносишь каждому утру новую искру и чистоту.">👶<span>Новорожд.</span></button>
+      <button class="chip" data-key="nature" data-text="Как природа — ты наполняешь меня жизнью, покоем и смыслом.">🍃<span>Природа</span></button>
+      <button class="chip" data-key="mount" data-text="Как горы — моя любовь к тебе прочна, нерушима и вечна.">⛰️<span>Горы</span></button>
+      <button class="chip" data-key="stone" data-text="Как камни — она неизменна и непоколебима.">🪨<span>Камни</span></button>
+      <button class="chip" data-key="gold"  data-text="Как золото — ты чиста и бесценна в моём сердце.">🏆<span>Золото</span></button>
+      <button class="chip" data-key="wind"  data-text="Как ветер — моё стремление к тебе свободно и бесконечно.">🌬️<span>Ветер</span></button>
+      <button class="chip" data-key="music" data-text="Как музыка — ты звучишь в моей душе, создавая гармонию.">🎵<span>Музыка</span></button>
+      <button class="chip" data-key="water" data-text="Как вода — ты источник моей жизни, вечно текущий к сердцу.">💧<span>Вода</span></button>
+      <button class="chip" data-key="fire"  data-text="Как огонь — я люблю тебя страстно, жгуче и неугасимо.">🔥<span>Огонь</span></button>
+      <button class="chip" data-key="volcano" data-text="Как вулкан — моя любовь извергается силой и наполняет весь мир тобой.">🌋<span>Вулкан</span></button>
+      <button class="chip" data-key="oxygen" data-text="Как кислород — ты моё дыхание, без тебя я не могу жить.">🫁<span>Кислород</span></button>
+      <button class="chip" data-key="life"  data-text="Как сама жизнь — ты моё бытие и единственный смысл.">♾️<span>Жизнь</span></button>
+      <button class="chip" data-key="heart" data-text="Как моё сердце — целое, искреннее и бьющееся только для тебя.">❤️<span>Сердце</span></button>
+    </div>
+
+    <p class="poem-final" id="poemFinal">Ты — моя единственная и неповторимая.</p>
+  </section>
+
       <section class="bouquet" id="bouquet">
         <div class="bouquet-head">
           <div class="tag">Сегодняшний букет</div>

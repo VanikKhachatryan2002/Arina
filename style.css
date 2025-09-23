@@ -414,3 +414,76 @@
 .lite .flip-inner{ transition:transform .45s ease; }
 .lite .angel-petals .petal{ box-shadow:none; filter:none; }
 .lite .heart{ animation:pulse 1.4s infinite; } /* gentler pulse */
+
+/* —— Universe Poem —— */
+.poem{
+  margin:12px 0;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:16px;
+  box-shadow:0 14px 34px rgba(0,0,0,.10);
+  padding:12px;
+}
+.poem-head{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.poem-ctrl{ display:flex; gap:8px; flex-wrap:wrap; }
+
+.poem-display{
+  margin:10px auto 8px;
+  text-align:center;
+  font-weight:700;
+  font-size:clamp(16px,4.6vw,18px);
+  color:#0f172a;
+  min-height:2.2em;
+  padding:8px 10px;
+  background:linear-gradient(180deg,#fff,#f8fafc);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:12px;
+}
+
+.poem-grid{
+  --min: 120px;
+  margin-top:8px;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  gap:10px;
+}
+.chip{
+  appearance:none;
+  border:1px solid rgba(0,0,0,.06);
+  background:#fff;
+  border-radius:14px;
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:transform .06s ease, box-shadow .2s ease, background .2s ease;
+}
+.chip:active{ transform:translateY(1px) scale(.99); }
+.chip span{ color:#334155; font-weight:700; font-size:14px; }
+.chip.active{
+  background:linear-gradient(180deg,#fff,#ffe4ec);
+  box-shadow:0 12px 28px rgba(255,77,109,.18);
+  border-color: rgba(255,77,109,.25);
+}
+
+.poem-final{
+  margin:10px 0 2px;
+  text-align:center;
+  color:#111827;
+  font-weight:800;
+  font-size:clamp(16px,4.6vw,18px);
+}
+
+/* печать строки (микро-анимация, дешёвая) */
+.poem-display.typing{ animation: fadeType .45s ease; }
+@keyframes fadeType{
+  from{ opacity:.35; transform:translateY(4px) }
+  to  { opacity:1;   transform:translateY(0)   }
+}
+
+/* lite mode слегка упрощаем */
+.lite .poem{ box-shadow:0 10px 26px rgba(0,0,0,.08); }

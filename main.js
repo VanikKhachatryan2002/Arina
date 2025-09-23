@@ -391,3 +391,86 @@ document.addEventListener('visibilitychange', ()=>{
 
   update();
 })();
+
+// —— Universe Poem ——
+(function(){
+  const display = document.getElementById('poemDisplay');
+  const grid = document.getElementById('poemGrid');
+  const playBtn = document.getElementById('poemPlay');
+  const nextBtn = document.getElementById('poemNext');
+  if(!display || !grid) return;
+
+  // Соберём все строки из чипсов (порядок важен)
+  const chips = [...grid.querySelectorAll('.chip')];
+  const verses = chips.map(ch => ch.getAttribute('data-text'));
+  // В конце добавим финальную строку:
+  const finalLine = document.getElementById('poemFinal')?.textContent?.trim() || '';
+  const all = [...verses, finalLine].filter(Boolean);
+
+  let idx = -1, playing = false, typerTimer = null, autoTimer = null;
+
+  function setActive(i){
+    chips.forEach((c,k)=> c.classList.toggle('active', k===i));
+  }
+
+  function typeLine(text, cb){
+    clearTimeout(typerTimer);
+    display.classList.add('typing');
+    // печатаем быстро, но мягко
+    const speed = window.__LITE__ ? 12 : 9;
+    display.textContent = '';
+    let j=0;
+    (function tick(){
+      display.textContent += text[j++] || '';
+      if (j <= text.length) { typerTimer = setTimeout(tick, speed); }
+      else { setTimeout(()=> display.classList.remove('typing'), 160); cb && cb(); }
+    })();
+  }
+
+  function show(i){
+    idx = i;
+    const isFinal = idx === all.length-1;
+    typeLine(all[idx], ()=>{
+      if(isFinal){
+        // маленький бонус: включим сердечки ненадолго, если у тебя есть canvas
+        try{
+          if (typeof mode !== 'undefined' && typeof ensureLoop === 'function'){
+            const prev = mode; mode = 'hearts'; ensureLoop();
+            setTimeout(()=>{ mode = prev; }, 2000);
+          }
+        }catch{}
+      }
+    });
+    if (idx < verses.length) setActive(idx); else setActive(-1);
+  }
+
+  function next(){
+    const n = (idx + 1) % all.length;
+    show(n);
+  }
+
+  // Клик по чипсам — ручной выбор
+  grid.addEventListener('click', e=>{
+    const b = e.target.closest('.chip'); if(!b) return;
+    const i = chips.indexOf(b);
+    playing = false; playBtn && playBtn.setAttribute('aria-pressed','false');
+    clearInterval(autoTimer);
+    show(i);
+  }, { passive:true });
+
+  // Кнопки управления
+  nextBtn?.addEventListener('click', ()=>{ playing = false; clearInterval(autoTimer); show((idx+1)%all.length); });
+  playBtn?.addEventListener('click', ()=>{
+    playing = !playing;
+    playBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    clearInterval(autoTimer);
+    if (playing){
+      next(); // сразу показать первую/следующую
+      const gap = window.__LITE__ ? 2600 : 2200; // пауза между строками
+      autoTimer = setInterval(next, gap);
+    }
+  });
+
+  // Инициализация дисплея
+  display.textContent = 'Знаешь, как я тебя люблю?';
+})();
