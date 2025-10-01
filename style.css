@@ -487,3 +487,45 @@
 
 /* lite mode слегка упрощаем */
 .lite .poem{ box-shadow:0 10px 26px rgba(0,0,0,.08); }
+
+/* Красивая кнопка-ссылка на альбом */
+.album-cta{
+  --ink:#0f172a; --edge:rgba(0,0,0,.06);
+  display:flex; align-items:center; gap:12px;
+  width:100%; max-width:720px; margin:10px auto 0;
+  text-decoration:none; color:var(--ink);
+  background: linear-gradient(135deg,#fff, #ffe9f1);
+  border:1px solid var(--edge);
+  border-radius:18px;
+  box-shadow:0 16px 34px rgba(255,77,109,.15);
+  padding:12px 14px;
+  margin-bottom: 20px;
+  transition: transform .12s ease, box-shadow .2s ease, background .3s ease;
+}
+.album-cta:hover{ transform:translateY(-1px); box-shadow:0 20px 40px rgba(255,77,109,.18)}
+.album-cta:active{ transform:translateY(0) scale(.995) }
+
+.album-cta__icon{
+  font-size:22px; line-height:1;
+  background:#111; color:#fff; border-radius:12px;
+  padding:8px 10px; box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+.album-cta__text{ display:flex; flex-direction:column; gap:2px; flex:1 1 auto; min-width:0 }
+.album-cta__text strong{ font-weight:800; letter-spacing:.2px; font-size:clamp(16px,4.8vw,18px) }
+.album-cta__text em{ font-style:normal; color:#475569; font-size:clamp(13px,4vw,14px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+
+.album-cta__badge{
+  display:inline-flex; align-items:center; gap:6px;
+  font-weight:700; font-size:12px; text-transform:lowercase;
+  background:#fff; border:1px solid var(--edge);
+  border-radius:999px; padding:6px 10px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+/* Мобильные правки */
+@media (max-width:520px){
+  .album-cta{ padding:12px; gap:10px }
+  .album-cta__icon{ padding:7px 9px; font-size:20px }
+  .album-cta__badge{ display:none } /* при желании можно скрыть бейдж на очень узких экранах */
+}
+

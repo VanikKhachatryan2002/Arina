@@ -474,3 +474,43 @@ document.addEventListener('visibilitychange', ()=>{
   // Инициализация дисплея
   display.textContent = 'Знаешь, как я тебя люблю?';
 })();
+
+// Милый эффект при нажатии на кнопку альбома
+(function(){
+  const el = document.querySelector('.album-cta');
+  if(!el) return;
+
+  el.addEventListener('click', (e)=>{
+    // небольшая вспышка из сердечек (не мешает переходу по ссылке)
+    const burst = document.createElement('span');
+    burst.className = 'album-cta-burst';
+    burst.style.position = 'absolute';
+    const rect = el.getBoundingClientRect();
+    burst.style.left = (rect.left + rect.width/2) + 'px';
+    burst.style.top  = (rect.top + rect.height/2 + window.scrollY) + 'px';
+    burst.style.pointerEvents = 'none';
+    document.body.appendChild(burst);
+
+    for(let i=0;i<12;i++){
+      const s = document.createElement('i');
+      s.textContent = ['❤️','💖','💕','💞','🌹'][Math.floor(Math.random()*5)];
+      s.style.position='absolute';
+      s.style.left='0'; s.style.top='0';
+      s.style.opacity='0';
+      s.style.transform='translate(-50%,-50%)';
+      s.style.fontSize='18px';
+      s.animate(
+        [
+          { transform:'translate(-50%,-50%) scale(.8)', opacity:0 },
+          { transform:`translate(${(Math.random()*120-60)}px, ${(Math.random()*-80-30)}px) scale(1.25)`, opacity:1, offset:.5 },
+          { transform:`translate(${(Math.random()*160-80)}px, ${(Math.random()*-140-60)}px) scale(1.1)`, opacity:0 }
+        ],
+        { duration: 1200 + Math.random()*400, easing:'ease-out' }
+      );
+      burst.appendChild(s);
+      setTimeout(()=> s.remove(), 1700);
+    }
+    setTimeout(()=> burst.remove(), 1800);
+  }, {passive:true});
+})();
+
