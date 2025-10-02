@@ -319,12 +319,30 @@ const idle=cb=>{if("requestIdleCallback"in window)requestIdleCallback(cb,{timeou
     else if(x>r.width*0.7){stopAuto();curlFX("right");loveSparks("right");next("right");}
   },{passive:true});
 
-  (function(){
-    let sx=0,sy=0,dx=0,dy=0,active=false,id=null;
-    stage.addEventListener("pointerdown",e=>{active=true;sx=e.clientX;sy=e.clientY;dx=0;dy=0;id=e.pointerId;stage.setPointerCapture(id);},{passive:true});
-    stage.addEventListener("pointermove",e=>{if(active){dx=e.clientX-sx;dy=e.clientY-sy;}},{passive:true});
-    stage.addEventListener("pointerup",()=>{if(!active)return;active=false;if(Math.abs(dx)>Math.max(40,Math.abs(dy)*1.2)){if(dx>0){stopAuto();curlFX("left");loveSparks("left");prev("left");}else{stopAuto();curlFX("right");loveSparks("right");next("right");}}dx=dy=0;},{passive:true});
-  })();
+(function(){
+  let sx=0,sy=0,dx=0,dy=0,active=false,id=null,ptype="";
+  stage.addEventListener("pointerdown",e=>{
+    ptype=e.pointerType||"mouse";
+    if(ptype==="mouse") return;
+    active=true;sx=e.clientX;sy=e.clientY;dx=0;dy=0;id=e.pointerId;stage.setPointerCapture(id);
+  },{passive:true});
+  stage.addEventListener("pointermove",e=>{
+    if(!active) return;
+    if((e.pointerType||ptype)==="mouse") return;
+    dx=e.clientX-sx;dy=e.clientY-sy;
+  },{passive:true});
+  stage.addEventListener("pointerup",()=>{
+    if(!active) return;
+    active=false;
+    if(ptype!=="mouse" && Math.abs(dx)>Math.max(40,Math.abs(dy)*1.2)){
+      if(dx>0){stopAuto();curlFX("left");loveSparks("left");prev("left");}
+      else{stopAuto();curlFX("right");loveSparks("right");next("right");}
+    }
+    dx=0;dy=0;ptype="";
+  },{passive:true});
+  stage.addEventListener("pointercancel",()=>{active=false;dx=0;dy=0;ptype="";},{passive:true});
+})();
+
 
   const onWheel=throttle(e=>{
     if(Math.abs(e.deltaX)>Math.abs(e.deltaY)&&Math.abs(e.deltaX)>10){

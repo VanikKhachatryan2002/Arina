@@ -36,6 +36,12 @@ body{
   border-radius:14px; overflow:hidden; box-shadow:var(--shadow-rose); border:var(--page-border); background:var(--paper);
   touch-action: pan-y;
 }
+
+@media screen and (max-height: 800px){
+  .stage{
+        height: 80vh;
+  }
+}
 .spread{position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; background:var(--paper)}
 .page{position:relative; overflow:hidden; background:var(--paper); border-right:var(--page-border)}
 .page.right{border-right:none; border-left:var(--page-border)}
