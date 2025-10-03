@@ -37,7 +37,7 @@ body{
   touch-action: pan-y;
 }
 
-@media screen and (max-height: 800px){
+@media screen and (max-height: 413px){
   .stage{
         height: 80vh;
   }
