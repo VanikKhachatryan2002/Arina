@@ -1,27 +1,29 @@
 (async function(){
-  const pieces=["d3c0yA","a478634f","xX","738faee7","noise","c997a5ff","_","1bd35829","more","183f3225","0f758eb5","cc8afc51","4163c6e2","d3c0yB"];
-  const order=[1,3,5,7,9,10,11,12];
-  const target=order.map(i=>pieces[i]).join("");
-  const okKey="book_ok";
+  const target="660a2b5d71278c47e7e54b0d24964ad62d05d62ccd4a8b947ec19c4f9edd6dad";
+  const okKey="book_ok_v2";
   const root=document.documentElement;
+
   async function sha256hex(s){
     const buf=new TextEncoder().encode(s);
     const dig=await crypto.subtle.digest("SHA-256",buf);
     return Array.from(new Uint8Array(dig)).map(b=>b.toString(16).padStart(2,"0")).join("");
   }
-  try{if(sessionStorage.getItem(okKey)==="1"){root.classList.remove("locked");return;}}catch(e){}
+
+  try{ if(sessionStorage.getItem(okKey)==="1"){ root.classList.remove("locked"); return; } }catch(e){}
+
   let granted=false;
   for(let i=0;i<3;i++){
     const code=prompt("Страница для нас двоих.\nВведите код доступа:");
-    if(code===null)break;
+    if(code===null) break;
     try{
       const h=await sha256hex(code.trim());
-      if(h===target){granted=true;break;}
+      if(h===target){ granted=true; break; }
     }catch(e){}
     alert("Неверный код. Попробуйте ещё раз.");
   }
+
   if(granted){
-    try{sessionStorage.setItem(okKey,"1");}catch(e){}
+    try{ sessionStorage.setItem(okKey,"1"); }catch(e){}
     root.classList.remove("locked");
   }else{
     document.title="Доступ закрыт";
