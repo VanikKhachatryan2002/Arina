@@ -168,3 +168,11 @@ body{
   .page{border-radius:18px}
   #viewer img{max-width:100vw;max-height:100dvh;object-fit:contain}
 }
+
+.chapters-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.chapter-card{display:grid;grid-template-rows:auto 1fr;align-items:start;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.08);overflow:hidden;cursor:pointer;transition:transform .08s ease,box-shadow .2s ease}
+.chapter-card:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(255,77,109,.18)}
+.chapter-thumb{aspect-ratio:4/3;width:100%;object-fit:cover;display:block}
+.chapter-meta{padding:8px 10px}
+.chapter-title{font-weight:800;font-size:13px;line-height:1.25}
+.chapter-date{font-size:12px;color:#64748b;margin-top:4px}
