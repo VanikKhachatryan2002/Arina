@@ -397,6 +397,27 @@ const isTouchLike=()=>mqHoverNone.matches;
         <img src="${s.right.src}" alt="${s.right.label||"Правая страница"} — ${formatDateRU(s.date)}" loading="eager" decoding="async">
       </div>
       <div class="ribbon">${formatDateRU(s.date)} · ${s.chapter||""}</div>`;
+    // Upgrade media to <video> if video is provided in data
+    try{
+      if(s.left && s.left.video){
+        const leftEl=sp.querySelector('.page.left');
+        const img=leftEl?.querySelector('img');
+        const v=document.createElement('video');
+        v.src=s.left.video; v.controls=true; v.playsInline=true;
+        if(s.left.poster) v.poster=s.left.poster;
+        v.setAttribute('aria-label', `${s.left.label||''} - ${formatDateRU(s.date)}`);
+        if(img) img.replaceWith(v); else leftEl?.appendChild(v);
+      }
+      if(s.right && s.right.video){
+        const rightEl=sp.querySelector('.page.right');
+        const img=rightEl?.querySelector('img');
+        const v=document.createElement('video');
+        v.src=s.right.video; v.controls=true; v.playsInline=true;
+        if(s.right.poster) v.poster=s.right.poster;
+        v.setAttribute('aria-label', `${s.right.label||''} - ${formatDateRU(s.date)}`);
+        if(img) img.replaceWith(v); else rightEl?.appendChild(v);
+      }
+    }catch{}
     stage.appendChild(sp);
     metaPage.textContent=`Разворот ${pageIndex} / ${(BOOK.spreads||[]).length}`;
     indexInfo.textContent=`Стр. ${pageIndex+1} из ${TOTAL}`;
