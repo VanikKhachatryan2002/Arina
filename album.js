@@ -355,7 +355,7 @@ const isTouchLike=()=>mqHoverNone.matches;
       wrap.innerHTML=`
         <div class="single-page">
           <img src="${BOOK.cover.image}" alt="Обложка — ${BOOK.cover.title||""}" loading="eager" decoding="async" height="600" width="510">
-          <div style="position:absolute;left:10px;right:10px;bottom:10px;background:linear-gradient(180deg,#ffffffcc,#ffffffa0);border:var(--border);border-radius:12px;padding:10px;text-align:center;color:#111827;font-weight:700">
+          <div style="position:absolute;z-index:1000;left:10px;right:10px;bottom:10px;background:linear-gradient(180deg,#ffffffcc,#ffffffa0);border:var(--border);border-radius:12px;padding:10px;text-align:center;color:#111827;font-weight:700">
             <strong>${BOOK.cover.title||""}</strong>
             <small style="display:block;color:#475569;font-weight:600;margin-top:4px">${BOOK.cover.subtitle||""}</small>
           </div>
