@@ -8,6 +8,8 @@
   const autoPlayBtn=document.getElementById("autoPlay");
   const prevBtn=document.getElementById("prevPage");
   const nextBtn=document.getElementById("nextPage");
+  const controlsRight=document.querySelector(".controls .right");
+  let pageListModal=null, pageListBody=null, pageListClose=null;
   const headerMeta=document.getElementById("headerMeta");
   const viewer=document.getElementById("bookViewer");
   const viewerImg=viewer?.querySelector("img");
@@ -176,6 +178,64 @@
 
   const FlipCtor=resolveFlipCtor();
   let flip=null;
+
+  /* Page list popup (lazy init) */
+  function ensurePageList(){
+    if(pageListModal) return;
+    pageListModal=document.createElement("div");
+    pageListModal.id="pageListModal";
+    pageListModal.className="modal";
+    pageListModal.hidden=true;
+    pageListModal.innerHTML=`<div class="modal__backdrop" data-close="1"></div>
+      <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="pageListTitle">
+        <button class="modal__close" id="pageListClose" aria-label="Закрыть">×</button>
+        <h3 id="pageListTitle">Список страниц</h3>
+        <div id="pageListBody" class="page-list-body"></div>
+      </div>`;
+    document.body.appendChild(pageListModal);
+    pageListBody=pageListModal.querySelector("#pageListBody");
+    pageListClose=pageListModal.querySelector("#pageListClose");
+    pageListClose?.addEventListener("click",closePageList,{passive:true});
+    pageListModal.querySelector(".modal__backdrop")?.addEventListener("click",closePageList,{passive:true});
+    addEventListener("keydown",e=>{ if(!pageListModal.hidden && e.key==="Escape") closePageList(); },{passive:true});
+    pageListBody?.addEventListener("click",e=>{
+      const btn=e.target.closest(".page-chip");
+      if(!btn) return;
+      const idx=Number(btn.dataset.idx||"0");
+      closePageList();
+      stopAutoplay();
+      flip.turnToPage(idx);
+    },{passive:true});
+  }
+  function openPageList(){
+    ensurePageList();
+    const items=metaList.map((m,i)=>`<button class="page-chip" data-idx="${i}">
+      <span class="num">${i+1}</span>
+      <span class="lbl">${m.chapter||m.label||"Страница"}</span>
+      <span class="date">${formatDateRU(m.date||"")}</span>
+    </button>`).join("");
+    pageListBody.innerHTML=items||"<p class='muted'>Нет страниц</p>";
+    pageListModal.hidden=false;
+    pageListModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  }
+  function closePageList(){
+    if(!pageListModal) return;
+    pageListModal.classList.remove("open");
+    pageListModal.hidden=true;
+    document.body.style.overflow="";
+  }
+
+  /* Add button to controls */
+  if(controlsRight){
+    const btn=document.createElement("button");
+    btn.id="pageListBtn";
+    btn.className="ghost pill";
+    btn.textContent="Список страниц";
+    btn.setAttribute("aria-haspopup","dialog");
+    btn.addEventListener("click",()=>{ openPageList(); },{passive:true});
+    controlsRight.prepend(btn);
+  }
 
   if(FlipCtor){
     const tmp=document.createElement("div");
