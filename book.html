@@ -3,54 +3,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Love Book | Vanik & Arina</title>
-  <meta name="description" content="A page-flip book view of our album with photos and notes." />
+  <title>Любимая книга | Ваник и Арина</title>
+  <meta name="description" content="Листай нашу историю: фото, главы и заметки в формате книги." />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flip-book/dist/flip-book.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flip-book@1.9.9/dist/flip-book.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/page-flip/dist/css/page-flip.min.css" />
   <link rel="stylesheet" href="book.css" />
 </head>
 <body class="book-body">
   <header class="book-header">
-    <a class="back" href="index.html">< Back to album</a>
+    <a class="back" href="index.html">< Назад к альбому</a>
     <div class="titles">
       <p class="eyebrow">Vanik &amp; Arina</p>
-      <h1>Our Love Book</h1>
-      <p class="lede">Turn the pages, see the photos, read the notes.</p>
+      <h1>Наша история</h1>
+      <p class="lede">Листай страницы, смотри фото, читай заметки.</p>
     </div>
-    <div class="header-meta" id="headerMeta">0 spreads</div>
+    <div class="header-meta" id="headerMeta">0 разворотов</div>
   </header>
 
   <main class="book-layout">
-    <section class="book-frame" aria-label="Flipbook">
+    <section class="book-frame" aria-label="Книга">
       <div id="book" aria-live="polite"></div>
       <div class="book-shadow" aria-hidden="true"></div>
     </section>
-    <aside class="notes-panel" aria-label="Notes for current spread">
+    <aside class="notes-panel" aria-label="Заметки для текущего разворота">
       <div class="notes-head">
-        <div id="noteTitle">Select a page</div>
+        <div id="noteTitle">Выберите страницу</div>
         <div id="noteDate"></div>
       </div>
-      <div id="noteText" class="note-text">Notes for the current spread will appear here.</div>
+      <div id="noteText" class="note-text">Здесь будут заметки для выбранного разворота.</div>
     </aside>
   </main>
 
   <div class="controls">
     <div class="left">
-      <button id="prevPage" class="pill">< Prev</button>
-      <button id="nextPage" class="pill">Next ></button>
+      <button id="prevPage" class="pill" title="Предыдущая страница">‹</button>
+      <button id="nextPage" class="pill" title="Следующая страница">›</button>
     </div>
     <div class="center" id="pageIndicator">-- / --</div>
     <div class="right">
-      <button id="autoPlay" class="ghost pill" aria-pressed="false">Autoplay</button>
+      <button id="autoPlay" class="ghost pill" aria-pressed="false" title="Автопрокрутка">Автопрокрутка</button>
     </div>
   </div>
 
   <div id="bookViewer" hidden>
-    <button class="close" aria-label="Close">?</button>
+    <button class="close" aria-label="Закрыть">?</button>
     <img alt="" />
   </div>
 
+  <!-- 3D FlipBook dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flip-book@1.9.9/dist/flip-book.min.js"></script>
+  <!-- PageFlip fallback -->
   <script src="https://unpkg.com/page-flip/dist/js/page-flip.browser.min.js"></script>
   <!-- For file:// access: album-data.js sets window.__ALBUM_DATA__ -->
   <script src="album-data.js"></script>
