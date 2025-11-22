@@ -169,7 +169,6 @@
   }
 
   function resolveFlipCtor(){
-    if(window.FlipBook?.PageFlip) return window.FlipBook.PageFlip; // 3D FlipBook bundle
     if(window.St?.PageFlip) return window.St.PageFlip;
     if(window.PageFlip) return window.PageFlip;
     return null;

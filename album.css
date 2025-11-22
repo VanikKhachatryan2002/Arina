@@ -26,6 +26,9 @@ body{
 .back span{background:#fff;border:var(--border);border-radius:12px;padding:8px 12px}
 .meta{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0    }
 .chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:var(--border);border-radius:999px;padding:6px 10px;font-size:13px;color:var(--ink)}
+.romantic-link{box-shadow:0 12px 28px rgba(255,111,165,.35);transition:transform .08s ease, box-shadow .2s ease; border:0;}
+.romantic-link:hover{transform:translateY(-1px);box-shadow:0 16px 36px rgba(255,111,165,.45)}
+.romantic-link:active{transform:translateY(0)}
 
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
 .toc .chip{cursor:pointer}

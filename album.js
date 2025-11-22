@@ -62,6 +62,20 @@ const throttle=(fn,ms)=>{let t=0;return function(...a){const now=performance.now
 const rafThrottle=fn=>{let lock=false;return function(...a){ if(lock) return; lock=true; requestAnimationFrame(()=>{ lock=false; fn.apply(this,a); }); }};
 const idle=cb=>{ if("requestIdleCallback" in window) requestIdleCallback(()=>cb(),{timeout:200}); else setTimeout(cb,0); };
 
+/* Insert romantic link to flipbook */
+(function(){
+  const head=document.querySelector(".book .head");
+  if(!head) return;
+  const link=document.createElement("a");
+  link.className="btn pill romantic-link";
+  link.href="book.html";
+  link.textContent="Перейти в книгу";
+  link.style.marginLeft="auto";
+  link.style.background="linear-gradient(120deg,#ff6fa5,#a586ff)";
+  link.style.color="#fff";
+  head.appendChild(link);
+})();
+
 /* Preload queue with small concurrency for smoother memory/CPU */
 function createPreloader(concurrency=2){
   const q=[]; let running=0;
