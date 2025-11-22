@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Love Book | Vanik & Arina</title>
+  <meta name="description" content="A page-flip book view of our album with photos and notes." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flip-book/dist/flip-book.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/page-flip/dist/css/page-flip.min.css" />
+  <link rel="stylesheet" href="book.css" />
+</head>
+<body class="book-body">
+  <header class="book-header">
+    <a class="back" href="index.html">< Back to album</a>
+    <div class="titles">
+      <p class="eyebrow">Vanik &amp; Arina</p>
+      <h1>Our Love Book</h1>
+      <p class="lede">Turn the pages, see the photos, read the notes.</p>
+    </div>
+    <div class="header-meta" id="headerMeta">0 spreads</div>
+  </header>
+
+  <main class="book-layout">
+    <section class="book-frame" aria-label="Flipbook">
+      <div id="book" aria-live="polite"></div>
+      <div class="book-shadow" aria-hidden="true"></div>
+    </section>
+    <aside class="notes-panel" aria-label="Notes for current spread">
+      <div class="notes-head">
+        <div id="noteTitle">Select a page</div>
+        <div id="noteDate"></div>
+      </div>
+      <div id="noteText" class="note-text">Notes for the current spread will appear here.</div>
+    </aside>
+  </main>
+
+  <div class="controls">
+    <div class="left">
+      <button id="prevPage" class="pill">< Prev</button>
+      <button id="nextPage" class="pill">Next ></button>
+    </div>
+    <div class="center" id="pageIndicator">-- / --</div>
+    <div class="right">
+      <button id="autoPlay" class="ghost pill" aria-pressed="false">Autoplay</button>
+    </div>
+  </div>
+
+  <div id="bookViewer" hidden>
+    <button class="close" aria-label="Close">?</button>
+    <img alt="" />
+  </div>
+
+  <script src="https://unpkg.com/page-flip/dist/js/page-flip.browser.min.js"></script>
+  <!-- For file:// access: album-data.js sets window.__ALBUM_DATA__ -->
+  <script src="album-data.js"></script>
+  <script defer src="book.js"></script>
+</body>
+</html>
