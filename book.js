@@ -101,7 +101,7 @@
     pushPage(
       {type:"end",chapter:"Конец",date:"",note:data.end?.text||""},
       `<div class="page-inner cover">
-        <div class="page-bg" style="background-image:url('${data.end?.image||data.cover?.image||""}'); opacity:.28"></div>
+        <div class="page-bg" style="background-image:url('${data.end?.image||data.cover?.image||""}');"></div>
         <div class="cover-copy">
           <p class="title">Конец истории.</p>
           <p class="subtitle">${data.end?.text||"Спасибо, что прочитали."}</p>
