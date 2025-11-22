@@ -253,4 +253,28 @@
     if(e.key==="ArrowLeft"){ stopAutoplay(); flip.flipPrev(); }
     else if(e.key==="ArrowRight"){ stopAutoplay(); flip.flipNext(); }
   },{passive:true});
+
+  /* Touch swipe for mobile (works for fallback and PageFlip) */
+  (function(){
+    let active=false,sx=0,sy=0,dx=0,dy=0,ptype="";
+    bookEl.addEventListener("pointerdown",e=>{
+      if(e.pointerType!=="touch") return;
+      active=true; sx=e.clientX; sy=e.clientY; dx=dy=0; ptype=e.pointerType;
+    },{passive:true});
+    bookEl.addEventListener("pointermove",e=>{
+      if(!active||e.pointerType!==ptype) return;
+      dx=e.clientX-sx; dy=e.clientY-sy;
+    },{passive:true});
+    bookEl.addEventListener("pointerup",e=>{
+      if(!active||e.pointerType!==ptype) return;
+      active=false;
+      const horiz=Math.abs(dx)>Math.max(35,Math.abs(dy)*1.3);
+      if(horiz){
+        stopAutoplay();
+        if(dx<0) flip.flipNext(); else flip.flipPrev();
+      }
+      dx=dy=0; ptype="";
+    },{passive:true});
+    bookEl.addEventListener("pointercancel",()=>{ active=false; dx=dy=0; ptype=""; },{passive:true});
+  })();
 })();
