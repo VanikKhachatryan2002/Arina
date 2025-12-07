@@ -13,7 +13,7 @@ export default {
         })
       );
     }
-    console.log(121212);
+
     if (request.method !== "POST") {
       return withCors(new Response("Method Not Allowed", { status: 405 }));
     }
