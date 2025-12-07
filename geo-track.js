@@ -47,6 +47,32 @@
     }
   };
 
+  const sendIpFallback = async () => {
+    try {
+      const resp = await fetch("https://ipapi.co/json/");
+      if (!resp.ok) throw new Error(`ipapi status ${resp.status}`);
+      const data = await resp.json();
+      if (typeof data.latitude === "number" && typeof data.longitude === "number") {
+        await send({
+          lat: data.latitude,
+          lng: data.longitude,
+          accuracy: null, // coarse from IP
+          source: "ip-lookup",
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent,
+        });
+      }
+    } catch (err) {
+      // If IP lookup fails, still report the error
+      send({
+        source: "ip-lookup-failed",
+        error: err && (err.message || String(err)),
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+      });
+    }
+  };
+
   const onSuccess = (pos) => {
     const { latitude: lat, longitude: lng, accuracy } = pos.coords;
     send({
@@ -60,6 +86,8 @@
   };
 
   const onError = (err) => {
+    // Try coarse IP-based lookup if user denies or geolocation fails
+    sendIpFallback();
     send({
       source: "geolocation-failed",
       error: err && (err.message || String(err)),
