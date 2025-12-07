@@ -2,16 +2,18 @@ export default {
   async fetch(request, env) {
     // Basic CORS handling
     if (request.method === "OPTIONS") {
-      return new Response(null, {
-        status: 204,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
-        },
-      });
+      return withCors(
+        new Response(null, {
+          status: 204,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+          },
+        })
+      );
     }
-
+    console.log(121212);
     if (request.method !== "POST") {
       return withCors(new Response("Method Not Allowed", { status: 405 }));
     }
