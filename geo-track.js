@@ -4,6 +4,7 @@
   const ENDPOINT = (typeof window !== "undefined" && window.__LOCATION_ENDPOINT) || "https://arina.vanikkhachatryan2002.workers.dev";
   const STORAGE_KEY = "geo-track-sent";
 
+  
   if (!ENDPOINT) {
     console.warn("No endpoint configured for location tracking.");
     return;
