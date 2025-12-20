@@ -32,3 +32,4 @@
 {"source":"geolocation-failed","timestamp":"2025-12-19T20:56:28.739Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36","error":"Timeout expired"}
 {"source":"geolocation-failed","timestamp":"2025-12-19T20:56:51.608Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36","error":"User denied Geolocation"}
 {"source":"ip-lookup-failed","timestamp":"2025-12-20T03:36:46.251Z","userAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3.1 Mobile/22D72 Safari/604.1","error":"Load failed"}
+{"source":"ip-lookup-failed","timestamp":"2025-12-20T08:49:39.628Z","userAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3.1 Mobile/22D72 Safari/604.1","error":"Load failed"}
