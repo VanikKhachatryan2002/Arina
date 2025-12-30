@@ -9,3 +9,4 @@
 {"lat":40.1814,"lng":44.5102,"accuracy":null,"source":"ip-lookup","timestamp":"2025-12-27T17:52:12.158Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36","error":null}
 {"source":"ip-lookup-failed","timestamp":"2025-12-27T20:47:43.447Z","userAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1","error":"Failed to fetch"}
 {"source":"ip-lookup-failed","timestamp":"2025-12-29T20:13:42.861Z","userAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3.1 Mobile/22D72 Safari/604.1","error":"Load failed"}
+{"source":"ip-lookup-failed","timestamp":"2025-12-30T19:20:27.127Z","userAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3.1 Mobile/22D72 Safari/604.1","error":"Load failed"}
