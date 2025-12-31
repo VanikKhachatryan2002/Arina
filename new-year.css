@@ -465,5 +465,5 @@ canvas#fireworks{
   to{ transform: translateY(0) scale(1); opacity: 1; }
 }
 @media (max-width:520px){
-  .ny-modal__card{ max-height: 86vh; padding: 16px 14px; }
+  .ny-modal__card{ max-height: 86vh; padding: 16px 14px; left: -10px; }
 }
