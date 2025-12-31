@@ -44,6 +44,12 @@
     gate.setAttribute("aria-hidden", "true");
     document.body.classList.remove("locked");
     resumeSnowOnUnlock = true;
+    setTimeout(() => {
+      if(resumeSnowOnUnlock && typeof snowOn !== "undefined" && snowOn && !raf && (!gate || gate.hidden)){
+        resumeSnowOnUnlock = false;
+        if(typeof startSnow === "function") startSnow();
+      }
+    }, 0);
   }
 
   async function checkPassword(){
@@ -715,4 +721,5 @@
       if(e.key === "Escape" && !modal.hidden) close();
     }, { passive: true });
   })();
+
 
