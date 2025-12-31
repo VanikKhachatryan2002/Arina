@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>С Новым годом, Арина</title>
+  <meta name="description" content="Элегантная новогодняя открытка: снег, музыка и тёплые пожелания для Арины. Год Лошади — наш год." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="new-year.css" />
+</head>
+<body class="locked">
+  <div class="gate" id="passwordGate" role="dialog" aria-modal="true" aria-label="Доступ">
+    <div class="gate__card">
+      <p class="gate__eyebrow">Личный подарок</p>
+      <h2 class="gate__title">Только для Арины</h2>
+      <p class="gate__text">Введи слово-пароль, чтобы открыть.</p>
+      <div class="gate__row">
+        <input class="gate__input" id="passwordInput" type="password" autocomplete="off" inputmode="text" placeholder="Пароль" />
+        <button class="pill gate__btn" id="passwordBtn" type="button">Открыть</button>
+      </div>
+      <p class="gate__hint" id="passwordHint" hidden>Неправильный пароль</p>
+    </div>
+  </div>
+
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <canvas id="fireworks" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="back" href="index.html" aria-label="Назад на главную">← На главную</a>
+    <div class="topbar__right">
+      <button class="ghost" id="musicBtn" type="button" aria-pressed="false">Музыка</button>
+      <button class="ghost" id="snowBtn" type="button" aria-pressed="true">Снег</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card hero" aria-label="Новогодняя открытка для Арины">
+      <p class="eyebrow">Арина</p>
+      <h1 class="title">С Новым годом</h1>
+      <p class="subtitle"><span class="tag-year">Год Лошади</span> — наш год. Год нашей любви.</p>
+
+      <div class="crest" aria-hidden="true">
+        <span class="crest__horse">♞</span>
+        <span class="crest__line"></span>
+        <span class="crest__horse">♞</span>
+      </div>
+
+      <p class="lead">
+        Я хочу, чтобы этот год принёс тебе здоровье и спокойствие. Чтобы стало легче. Чтобы в твоих днях было больше света, чем боли.
+        Пусть у нас будет наш год — год, в котором любовь не сдаётся.
+      </p>
+      <p class="sign">Твой Ваник</p>
+
+      <div class="hero-links">
+        <a class="pill" href="#horse">Наш год</a>
+        <a class="pill" href="#wishes">Пожелания</a>
+        <button class="pill" id="newYearNoteBtn" type="button">Поздравление 2026</button>
+        <button class="pill ghost" id="fireworksBtn" type="button">Салют</button>
+      </div>
+      <noscript><p class="tiny">Включи JavaScript, чтобы увидеть снег и включить музыку.</p></noscript>
+    </section>
+
+    <section class="card horse" id="horse" aria-label="Год Лошади — наш год">
+      <h2 class="h2">Год Лошади — наш год</h2>
+      <p class="muted">
+        Мы с тобой родились в год Лошади. И поэтому этот новый год для меня — как знак: «Мы». Как будто сама судьба говорит:
+        <span class="quote">«Беги к свету. И пусть любовь будет твоей силой»</span>.
+      </p>
+
+      <div class="horse-grid">
+        <div class="horse-card">
+          <div class="horse-ico" aria-hidden="true">♞</div>
+          <div class="horse-text">
+            <b>Сила</b>
+            <p>Пусть в тебе будет сила жить — не из последних сил, а из любви к себе.</p>
+          </div>
+        </div>
+        <div class="horse-card">
+          <div class="horse-ico" aria-hidden="true">✦</div>
+          <div class="horse-text">
+            <b>Свобода</b>
+            <p>Пусть свобода вернётся в твоё тело и в твои дни — без боли, без страха.</p>
+          </div>
+        </div>
+        <div class="horse-card">
+          <div class="horse-ico" aria-hidden="true">✨</div>
+          <div class="horse-text">
+            <b>Движение</b>
+            <p>Пусть каждый месяц будет шагом вперёд — тихим, но настоящим.</p>
+          </div>
+        </div>
+        <div class="horse-card">
+          <div class="horse-ico" aria-hidden="true">♥</div>
+          <div class="horse-text">
+            <b>Любовь</b>
+            <p>Пусть любовь будет домом: тёплым, безопасным и живым.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card wishes" id="wishes" aria-label="Пожелания на новый год">
+      <h2 class="h2">Мои пожелания тебе на новый год</h2>
+      <ul class="wish-list">
+        <li><span class="wish-ico">❄</span><span class="wish-text">Здоровья — чтобы тело стало тише, сильнее и свободнее.</span></li>
+        <li><span class="wish-ico">✨</span><span class="wish-text">Спокойствия — чтобы внутри было безопасно.</span></li>
+        <li><span class="wish-ico">🌙</span><span class="wish-text">Мягких ночей и добрых снов — без тревоги.</span></li>
+        <li><span class="wish-ico">🌹</span><span class="wish-text">Красоты в мелочах — роз, света и маленьких радостей.</span></li>
+        <li><span class="wish-ico">🕊</span><span class="wish-text">Людей рядом, которые умеют беречь и не давить.</span></li>
+        <li><span class="wish-ico">💛</span><span class="wish-text">Нежности к себе — ты не обязана быть сильной каждую секунду.</span></li>
+        <li><span class="wish-ico">🌟</span><span class="wish-text">Мечт, которые становятся планами — и сбываются.</span></li>
+        <li><span class="wish-ico">♥</span><span class="wish-text">Счастья — тихого, настоящего, твоего.</span></li>
+        <li><span class="wish-ico">🫶</span><span class="wish-text">Тепла — чтобы рядом всегда находились добрые руки и добрые слова.</span></li>
+        <li><span class="wish-ico">☀</span><span class="wish-text">Улыбок — пусть они возвращаются чаще, просто потому что можно.</span></li>
+        <li><span class="wish-ico">🪽</span><span class="wish-text">Опоры — чтобы тебе было на что опереться, когда миру хочется качнуть.</span></li>
+        <li><span class="wish-ico">🎠</span><span class="wish-text">Нашего года — года Лошади, где любовь сильнее всего.</span></li>
+      </ul>
+      <p class="muted small">Если хочешь — включи музыку и просто побудь в этом снеге.</p>
+    </section>
+
+    <section class="card note" aria-label="Короткое письмо">
+      <h2 class="h2">Маленькое письмо</h2>
+      <p class="note-text">
+        Пусть в этом году у тебя будет больше света, чем боли. Больше опоры, чем тревоги. Больше жизни, чем ожидания.
+        Пусть твоя душа отдыхает. Пусть тело исцеляется. И пусть любовь остаётся твоей защитой.
+      </p>
+      <p class="note-sign">С любовью — Ваник</p>
+    </section>
+
+    <footer class="footer">
+      <a class="link" href="index.html">← На главную</a>
+      <span class="tiny" id="date"></span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <audio id="bgm" preload="auto" loop autoplay>
+    <source src="audio/new-year.mp3" type="audio/mpeg" />
+    <source src="audio/song.mp3" type="audio/mpeg" />
+  </audio>
+  <div class="ny-modal" id="newYearNoteModal" hidden>
+    <div class="ny-modal__backdrop" data-close="ny"></div>
+    <div class="ny-modal__card" role="dialog" aria-modal="true" aria-label="Поздравление 2026">
+      <button class="ny-modal__close" type="button" data-close="ny" aria-label="Закрыть">×</button>
+      <div class="ny-modal__head">
+        <span class="ny-modal__badge">2026 — наш год</span>
+        <h2 class="ny-modal__title">Моя вечная любовь, Арина</h2>
+      </div>
+      <div class="ny-modal__body">
+        <p>Моя вечная любовь, Арина… 2025-й стал для нас годом приобретений и потерь, он принёс в нашу жизнь и плохое, и хорошее. Самый большой дар 2025 года — это то, что мы нашли друг друга. Мы нашли такую любовь, которая уникальна в нашем мире.</p>
+        <p>Но 2025-й принёс с собой и боль — будто захотел пойти против той любви, которую сам же нам подарил. Я оглядываюсь назад, анализирую и вижу: после всех тяжёлых событий в нашей жизни наша любовь побеждала. Но в конце удар оказался сильным — и, пытаясь победить любой ценой, она проиграла ту битву. Болезнь и комплексы, которые она принесла, победили её в той битве…</p>
+        <p>Но победа в одной битве ещё не означает победы в войне. И пока наша любовь дышит — у неё есть шанс победить всё. И тогда мы будем вместе, держась за руки.</p>
+        <p>Я хочу, чтобы 2026-й стал годом этих побед. Я хочу, чтобы любовь победила все помехи и обстоятельства, и чтобы мы дошли до вершины нашей горы счастья. Эта гора была выбрана не случайно: она показывает, через какие трудности мы прошли и ещё должны пройти. Эта гора — и есть те битвы, в которых наша любовь сражается.</p>
+        <p>2026 — наш год, Арина. И мы должны сделать его особенным. Он должен стать годом наших побед. Всё зависит от нас: только мы вдвоём можем укрепить нашу любовь. Я делаю и буду делать всё ради этого. Если понадобится — я буду мучить самого себя, лишь бы наша любовь победила.</p>
+        <p>Арина, я люблю тебя. Ты — моя сила. Убери из себя все комплексы. Прими себя как мою вторую половину. Я знаю, это очень трудно: жизнь наносит тебе тяжёлые удары… Но не случайно жизнь подарила мне тебя. Это и сила, и возможность бороться и побеждать.</p>
+        <p>Арина, я ещё раз протягиваю тебе руку и говорю: просто крепко держи мою руку. Считай себя моей второй половиной — и я сделаю 2026 год годом счастья и побед.</p>
+        <p>Эти дни без тебя я прожил очень тяжело, но именно в эти дни я приготовил для тебя подарок — подарок, который усилит нашу любовь и заставит тебя бороться. И ты можешь увидеть этот подарок внутри своего подарка.</p>
+        <p>Арина, моя любовь, поздравляю тебя с Рождеством. Пусть следующий год подарит тебе и твоей семье здоровье, любовь и счастье. И пусть твой брат вернётся, и ваша семья снова станет полной — наполненной любовью и счастьем.</p>
+        <p class="ny-modal__sign">«Воздух», Арина.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <script defer src="new-year.js"></script>
+</body>
+</html>
+
+

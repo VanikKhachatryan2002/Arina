@@ -12,6 +12,8 @@
     a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
     .btn.birthday{background:linear-gradient(135deg,#ff4d6d,#a586ff);color:#fff;border:0;box-shadow:0 12px 28px rgba(255,77,109,.22)}
     .btn.birthday:hover{box-shadow:0 16px 36px rgba(255,77,109,.26)}
+    .btn.newyear{background:linear-gradient(135deg,#8be9fd,#a586ff);color:#fff;border:0;box-shadow:0 12px 28px rgba(165,134,255,.22)}
+    .btn.newyear:hover{box-shadow:0 16px 36px rgba(165,134,255,.28)}
     .row{display:flex;gap:12px;flex-wrap:wrap;align-items:stretch}
     .col{flex:1 1 280px;background:rgba(255,255,255,.64);border-radius:12px;padding:12px 12px 14px;border:1px solid rgba(0,0,0,.05)}
     .tag{display:inline-block;font-size:12px;color:#000;background:#fff;padding:4px 8px;border-radius:999px;border:1px solid rgba(0,0,0,.06)}
@@ -530,4 +532,89 @@
   .album-cta{ padding:12px; gap:10px }
   .album-cta__icon{ padding:7px 9px; font-size:20px }
   .album-cta__badge{ display:none } /* при желании можно скрыть бейдж на очень узких экранах */
+}
+
+/* New Year greeting modal */
+.ny-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.ny-modal[hidden]{ display: none; }
+.ny-modal__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, .65);
+  backdrop-filter: blur(6px);
+}
+.ny-modal__card{
+  position: relative;
+  width: min(860px, 94vw);
+  max-height: min(82vh, 820px);
+  overflow: auto;
+  background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,240,248,.96));
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(15,23,42,.28);
+  padding: 20px 20px 18px;
+  animation: nyPop .35s ease;
+}
+.ny-modal__head{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.ny-modal__badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #b45309;
+  background: #fff7ed;
+  border: 1px solid rgba(251,191,36,.35);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.ny-modal__title{
+  margin: 10px 0 0;
+  font-size: clamp(20px, 5vw, 28px);
+  color: #111827;
+}
+.ny-modal__body{
+  color: #334155;
+  font-size: clamp(14px, 4vw, 16px);
+  line-height: 1.65;
+}
+.ny-modal__body p{ margin: 10px 0; }
+.ny-modal__sign{
+  margin-top: 14px;
+  font-weight: 800;
+  text-align: right;
+  color: #0f172a;
+}
+.ny-modal__close{
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.08);
+  background: #fff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0,0,0,.12);
+}
+@keyframes nyPop{
+  from{ transform: translateY(8px) scale(.98); opacity: .6; }
+  to{ transform: translateY(0) scale(1); opacity: 1; }
+}
+@media (max-width:520px){
+  .ny-modal__card{ max-height: 84vh; padding: 16px 14px; }
 }

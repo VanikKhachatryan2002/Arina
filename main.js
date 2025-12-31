@@ -514,3 +514,31 @@ document.addEventListener('visibilitychange', ()=>{
   }, {passive:true});
 })();
 
+
+/* =========================================================
+   11) New Year 2026 greeting modal
+   ========================================================= */
+(function(){
+  const btn = document.getElementById('newYearNoteBtn');
+  const modal = document.getElementById('newYearNoteModal');
+  if(!btn || !modal) return;
+
+  function open(){
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('.ny-modal__close');
+    closeBtn && closeBtn.focus();
+  }
+  function close(){
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', open, { passive: true });
+  modal.addEventListener('click', (e)=>{
+    if(e.target.closest('[data-close="ny"]')) close();
+  }, { passive: true });
+  addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && !modal.hidden) close();
+  }, { passive: true });
+})();
