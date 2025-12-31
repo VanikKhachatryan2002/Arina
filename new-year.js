@@ -680,6 +680,11 @@
     if((rockets.length || sparks.length) && !fwRaf) ensureFireworks();
     if(autoMuted && audio && !audio.paused) attemptUnmute();
   }, { passive: true });
+  addEventListener("pageshow", () => {
+    if(!snowOn) return;
+    if(gate && !gate.hidden) return;
+    if(!raf) startSnow();
+  }, { passive: true });
 })();
 
 
@@ -721,5 +726,6 @@
       if(e.key === "Escape" && !modal.hidden) close();
     }, { passive: true });
   })();
+
 
 
