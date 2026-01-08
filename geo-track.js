@@ -40,7 +40,7 @@
       }
     } catch (err) {
       send({
-        source: "ip-lookup-failed",
+        source: `ip-lookup-failed ${pageTitle}`,
         error: err && (err.message || String(err)),
         timestamp: new Date().toISOString(),
         userAgent: navigator.userAgent,
@@ -74,7 +74,7 @@
     console.warn(`Geolocation not supported. ${pageTitle}`);
     sendIpFallback();
     send({
-      source: "geolocation-not-supported",
+      source: `geolocation-not-supported ${pageTitle}`,
       timestamp: new Date().toISOString(),
       userAgent: navigator.userAgent,
     });
