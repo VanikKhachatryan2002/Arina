@@ -1,10 +1,10 @@
-  :root{--bg1:#ffe4ec;--bg2:#e3f2ff;--bg3:#eafbe6;--ink:#1f2937;--muted:#475569;--accent:#ff4d6d;--glass:rgba(255,255,255,.68);--radius:18px}
+  :root{--bg1:#ffe4ec;--bg2:#e3f2ff;--bg3:#eafbe6;--ink:#1f2937;--muted:#475569;--accent:#ff4d6d;--glass:rgba(255,255,255,.28);--radius:18px}
     *{box-sizing:border-box} html,body{height:100%;-webkit-text-size-adjust:100%;}
     body{margin:0;color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));background-image:url("photos/Arina-background.jpeg");background-size:contain; background-repeat:repeat;animation:bg 18s ease-in-out infinite;overflow-x:hidden;-webkit-tap-highlight-color:transparent;padding-bottom:max(12px,env(safe-area-inset-bottom))}
     @keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
     .wrap{min-height:100%;display:grid;place-items:center;padding:16px}
     .card{width:min(720px,100%);background:var(--glass);backdrop-filter:blur(10px) saturate(1.2);border:1px solid rgba(255,255,255,.35);border-radius:var(--radius);box-shadow:0 18px 50px rgba(0,0,0,.12);padding:22px 16px 16px;position:relative;overflow:hidden}
-    h1{margin:0 0 6px;font-weight:800;letter-spacing:.2px;font-size:clamp(24px,7vw,38px)} .sub{margin:0 0 10px;color:var(--muted);font-size:clamp(14px,3.8vw,16px)}
+    h1{margin:0 0 6px;font-weight:800;letter-spacing:.2px;font-size:clamp(24px,7vw,38px)} .sub{margin:0 0 10px;color:#000;font-size:clamp(14px,3.8vw,16px)}
     .badge{display:inline-flex;gap:8px;align-items:center;font-weight:700;color:#fff;background:var(--accent);padding:6px 10px;border-radius:999px;box-shadow:0 6px 18px rgba(255,77,109,.35)}
     .btns{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
     .btn{appearance:none;border:0;background:#111;color:#fff;font-weight:700;padding:12px 14px;border-radius:14px;cursor:pointer;box-shadow:0 10px 20px rgba(0,0,0,.15);transition:transform .06s ease}
@@ -414,7 +414,7 @@
 
 /* —— LITE / PERFORMANCE MODE —— */
 .lite body{ animation:none; } /* stop animated gradient */
-.lite .card{ backdrop-filter:none; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
+.lite .card{ backdrop-filter:none; box-shadow:0 12px 30px rgba(0,0,0,.08); }
 .lite .gallery img{ filter:none; transform:none; transition:none; }
 .lite .flip-inner{ transition:transform .45s ease; }
 .lite .angel-petals .petal{ box-shadow:none; filter:none; }
