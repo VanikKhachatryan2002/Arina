@@ -1,6 +1,6 @@
   :root{--bg1:#ffe4ec;--bg2:#e3f2ff;--bg3:#eafbe6;--ink:#1f2937;--muted:#475569;--accent:#ff4d6d;--glass:rgba(255,255,255,.28);--radius:18px}
     *{box-sizing:border-box} html,body{height:100%;-webkit-text-size-adjust:100%;}
-    body{margin:0;color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));background-image:url("photos/Arina-background.jpeg");background-size:contain; background-repeat:repeat;animation:bg 18s ease-in-out infinite;overflow-x:hidden;-webkit-tap-highlight-color:transparent;padding-bottom:max(12px,env(safe-area-inset-bottom))}
+    body{margin:0;color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));background-image:url("photos/Arina-background.webp");background-size:contain; background-repeat:repeat;animation:bg 18s ease-in-out infinite;overflow-x:hidden;-webkit-tap-highlight-color:transparent;padding-bottom:max(12px,env(safe-area-inset-bottom))}
     @keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
     .wrap{min-height:100%;display:grid;place-items:center;padding:16px}
     .card{width:min(720px,100%);background:var(--glass);backdrop-filter:blur(10px) saturate(1.2);border:1px solid rgba(255,255,255,.35);border-radius:var(--radius);box-shadow:0 18px 50px rgba(0,0,0,.12);padding:22px 16px 16px;position:relative;overflow:hidden}
