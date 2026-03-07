@@ -169,6 +169,16 @@ body::before {
   box-shadow: none;
 }
 
+.message-btn {
+  background: linear-gradient(135deg, #ff2d6f, #ff7aa2 48%, #ffd6e5);
+  color: #fff7fb;
+  box-shadow: 0 16px 32px rgba(255, 45, 111, 0.28);
+}
+
+.message-btn:hover {
+  box-shadow: 0 20px 38px rgba(255, 45, 111, 0.34);
+}
+
 .map__head h2,
 .wishes h2 {
   font-family: "Playfair Display", serif;
@@ -274,6 +284,177 @@ body::before {
   color: #ff006d;
 }
 
+.love-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.love-modal[hidden] {
+  display: none;
+}
+
+.love-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 182, 204, 0.32), transparent 40%),
+    rgba(55, 11, 31, 0.68);
+  backdrop-filter: blur(10px);
+}
+
+.love-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  max-height: min(88vh, 920px);
+  overflow: auto;
+  border-radius: 30px;
+  padding: 22px;
+}
+
+.love-modal__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #9d003f;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(87, 13, 44, 0.18);
+}
+
+.love-letter {
+  position: relative;
+  overflow: hidden;
+  padding: 44px 38px 36px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 253, 0.98), rgba(255, 238, 245, 0.96)),
+    radial-gradient(circle at top right, rgba(255, 170, 200, 0.28), transparent 28%);
+  border: 1px solid rgba(255, 171, 200, 0.5);
+  box-shadow:
+    0 28px 80px rgba(88, 24, 51, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.love-letter::before,
+.love-letter::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.love-letter::before {
+  width: 220px;
+  height: 220px;
+  top: -90px;
+  left: -70px;
+  background: radial-gradient(circle, rgba(255, 145, 185, 0.18), transparent 70%);
+}
+
+.love-letter::after {
+  width: 260px;
+  height: 260px;
+  right: -100px;
+  bottom: -120px;
+  background: radial-gradient(circle, rgba(255, 214, 229, 0.5), transparent 68%);
+}
+
+.love-letter__seal {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 82px;
+  height: 82px;
+  transform: translateX(-50%) rotate(-8deg);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, #ffd7e6, #d31354 62%, #940036 100%);
+  box-shadow:
+    0 12px 30px rgba(211, 19, 84, 0.38),
+    inset 0 2px 8px rgba(255, 255, 255, 0.42);
+}
+
+.love-letter__seal::before,
+.love-letter__seal::after {
+  content: "";
+  position: absolute;
+  background: #fff4f8;
+}
+
+.love-letter__seal::before {
+  width: 24px;
+  height: 38px;
+  top: 22px;
+  left: 29px;
+  transform: rotate(-45deg);
+}
+
+.love-letter__seal::after {
+  width: 24px;
+  height: 38px;
+  top: 22px;
+  left: 29px;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  box-shadow: -14px -14px 0 0 #fff4f8;
+}
+
+.love-letter__eyebrow {
+  margin: 52px 0 8px;
+  text-align: center;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #df2f72;
+}
+
+.love-letter__title {
+  margin: 0 0 20px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  color: #5b1735;
+}
+
+.love-letter__body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 16px;
+  color: #5f2840;
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.love-letter__body p {
+  margin: 0;
+}
+
+.love-letter__final {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #bf1451;
+}
+
+.love-letter__sign {
+  margin-top: 22px;
+  text-align: right;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: #d31354;
+}
+
 .petal {
   position: absolute;
   top: -20px;
@@ -361,6 +542,33 @@ body::before {
   .btn {
     width: 100%;
     justify-content: center;
+  }
+  .love-modal {
+    padding: 14px;
+  }
+  .love-modal__dialog {
+    padding: 10px;
+    width: 100%;
+  }
+  .love-modal__close {
+    top: 14px;
+    right: 14px;
+  }
+  .love-letter {
+    padding: 34px 20px 24px;
+    border-radius: 24px;
+  }
+  .love-letter__seal {
+    width: 70px;
+    height: 70px;
+    top: 18px;
+  }
+  .love-letter__eyebrow {
+    margin-top: 44px;
+  }
+  .love-letter__body {
+    font-size: 0.98rem;
+    line-height: 1.72;
   }
 }
 

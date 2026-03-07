@@ -37,6 +37,7 @@
       <div class="actions">
         <button class="btn" id="shimmer" type="button">Пусть засияют лепестки</button>
         <button class="btn ghost" id="promise" type="button">Тихое обещание</button>
+        <button class="btn message-btn" id="openMessage" type="button">Открыть моё послание</button>
       </div>
     </section>
 
@@ -112,6 +113,26 @@
       </ul>
     </section>
   </main>
+
+  <div class="love-modal" id="loveModal" hidden>
+    <div class="love-modal__backdrop" id="closeMessageBackdrop"></div>
+    <div class="love-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="loveMessageTitle">
+      <button class="love-modal__close" id="closeMessage" type="button" aria-label="Закрыть письмо">×</button>
+      <div class="love-letter">
+        <div class="love-letter__seal" aria-hidden="true"></div>
+        <p class="love-letter__eyebrow">Для моей любимой Арины</p>
+        <h2 class="love-letter__title" id="loveMessageTitle">Моё послание к 8 Марта</h2>
+        <div class="love-letter__body">
+          <p>Арина, моя любимая, поздравляю тебя с 8 Марта!</p>
+          <p>Этот день — Международный день женщин, красоты и матерей. Для нас он имеет особый смысл, потому что ты — моя будущая жена и самая красивая девушка для меня, как душой, так и внешне. Ты также будущая мама наших детей. Получается, что все смыслы этого праздника относятся именно к тебе.</p>
+          <p>Я очень тебя люблю и хочу, чтобы ты всегда оставалась такой же красивой, доброй и заботливой. Самое главное — желаю тебе крепкого здоровья и чтобы ты достигла своего счастья. Ведь твоё счастье — это наше общее счастье, и мы представляем его только вместе, рядом друг с другом.</p>
+          <p>Также передаю поздравления твоей маме, сёстрам и бабушке. Пусть они всегда будут окружены любовью и счастьем. Ты — их гордость и радость.</p>
+          <p class="love-letter__final">Люблю тебя, моя бесконечная любовь.</p>
+        </div>
+        <div class="love-letter__sign">Твой Ваник</div>
+      </div>
+    </div>
+  </div>
 
   <script defer src="may8.js"></script>
 </body>
