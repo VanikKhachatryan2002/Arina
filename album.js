@@ -36,24 +36,7 @@
   }
 })();
 
-/* =========================
-   2) DATA LOADER
-   ========================= */
-async function loadAlbumData(){
-  const inline=document.getElementById("albumData");
-  if(inline){
-    const txt=inline.textContent.trim();
-    if(txt && txt.startsWith("{")){ try{ return JSON.parse(txt); }catch{} }
-  }
-  if(window.__ALBUM_DATA__) return window.__ALBUM_DATA__;
-  if(location.protocol==="http:"||location.protocol==="https:"){
-    const url=new URL("./album-data.json",document.baseURI);
-    const res=await fetch(url.toString(),{cache:"no-store"});
-    if(!res.ok) throw new Error("HTTP "+res.status);
-    return await res.json();
-  }
-  throw new Error("No album data source available. For file:// add inline JSON or album-data.js");
-}
+const { loadAlbumData, formatDateRU } = window.__albumShared;
 
 /* =========================
    3) SMALL UTILITIES
@@ -92,19 +75,6 @@ function createPreloader(concurrency=2){
   return function enqueue(src){ if(!src) return; q.push(src); run(); };
 }
 const enqueuePreload=createPreloader(2);
-
-/* Memoized date → RU string */
-const dateCache=new Map();
-function formatDateRU(iso){
-  if(!iso) return "";
-  if(dateCache.has(iso)) return dateCache.get(iso);
-  try{
-    const d=new Date(iso+"T12:00:00");
-    const s=d.toLocaleDateString("ru-RU",{day:"2-digit",month:"long",year:"numeric"});
-    dateCache.set(iso,s);
-    return s;
-  }catch{ return iso; }
-}
 
 /* Media queries cached */
 const mqMobilePortrait=matchMedia("(max-width:560px) and (orientation:portrait)");

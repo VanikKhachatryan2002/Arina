@@ -1,4 +1,5 @@
 (async function(){
+  const { loadAlbumData, formatDateRU } = window.__albumShared;
   const bookEl=document.getElementById("book");
   if(!bookEl) return;
   const noteTitle=document.getElementById("noteTitle");
@@ -18,29 +19,6 @@
   const pages=[];
   const metaList=[];
   let autoTimer=null;
-
-  const formatDateRU=(iso)=>{
-    if(!iso) return "";
-    try{
-      const d=new Date(iso+"T12:00:00");
-      return d.toLocaleDateString("ru-RU",{day:"2-digit",month:"long",year:"numeric"});
-    }catch{return iso;}
-  };
-
-  async function loadAlbumData(){
-    const inline=document.getElementById("albumData");
-    if(inline){
-      const txt=inline.textContent.trim();
-       if(txt && txt.startsWith("{")) try{return JSON.parse(txt);}catch{}
-    }
-    if(window.__ALBUM_DATA__) return window.__ALBUM_DATA__;
-    if(location.protocol==="http:"||location.protocol==="https:"){
-      const res=await fetch(new URL("./album-data.json",document.baseURI).toString(),{cache:"no-store"});
-      if(!res.ok) throw new Error("HTTP "+res.status);
-      return await res.json();
-    }
-    throw new Error("No album data available. On file://, include album-data.js or inline JSON.");
-  }
 
   function pushPage(meta, html){
     const el=document.createElement("article");
