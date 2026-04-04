@@ -1,2 +1,14 @@
-# Arina Gift — GitHub Pages (phone‑friendly)
-Upload these files to a public repo and enable GitHub Pages.
+Arina gift site.
+
+Useful local maintenance commands:
+
+- `node tools/sync-album-data.js`
+- `node tools/validate-album-data.js`
+- `node tools/maintain-album-data.js`
+
+Notes:
+
+- `album-data.json` is the source of truth for book/album content.
+- `album-data.js` is generated for `file://` fallback and should not be edited manually.
+- For local browser use without a server, `album.html` and `book.html` can use `album-data.js`.
+- For normal production use over `http/https`, pages load `album-data.json`.

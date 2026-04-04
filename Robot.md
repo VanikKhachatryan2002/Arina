@@ -15,8 +15,8 @@ Optional: a Cloudflare Worker (`_worker.js`) receives location telemetry from `g
   - `book.html`, `book.css`, `book.js`
 - Content
   - `photos/` (images) and `audio/song.mp3`
-  - `album-data.json` (hosted HTTP(S) use)
-  - `album-data.js` (file:// fallback: sets `window.__ALBUM_DATA__`)
+  - `album-data.json` (source of truth; hosted HTTP(S) use)
+  - `album-data.js` (generated file:// fallback: sets `window.__ALBUM_DATA__`)
 - Location tracking
   - `geo-track.js` (browser collector)
   - `_worker.js` + `wrangler.toml` (Cloudflare Worker logger)
@@ -34,7 +34,8 @@ Optional: a Cloudflare Worker (`_worker.js`) receives location telemetry from `g
 - Music: put an MP3 at `audio/song.mp3`.
 - Photos:
   - Add images under `photos/` / `photos/album/...`.
-  - Update `album-data.json` (and keep `album-data.js` in sync if you want `file://` to work).
+  - Update `album-data.json`.
+  - Run `node tools/maintain-album-data.js` to regenerate `album-data.js` and validate paths.
 - Album data shape (high level):
   - `cover`: `{ image, title, subtitle }`
   - `spreads[]`: `{ id, date, chapter, left, right, note }`
