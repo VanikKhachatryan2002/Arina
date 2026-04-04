@@ -117,7 +117,7 @@ const isTouchLike=()=>mqHoverNone.matches;
   try{ BOOK=await loadAlbumData(); }
   catch(err){
     console.error(err);
-    alert("Не удалось загрузить данные альбома. Если вы открываете файл локально (file://), вставьте JSON в <script id=\"albumData\"> или подключите album-data.js. На GitHub Pages всё будет работать автоматически.");
+    alert("Не удалось загрузить данные альбома. Для локальной работы запустите node tools/serve-local.js и откройте http://localhost:8000.");
     return;
   }
 

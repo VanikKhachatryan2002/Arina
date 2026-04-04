@@ -16,7 +16,6 @@ Optional: a Cloudflare Worker (`_worker.js`) receives location telemetry from `g
 - Content
   - `photos/` (images) and `audio/song.mp3`
   - `album-data.json` (source of truth; hosted HTTP(S) use)
-  - `album-data.js` (generated `file://` fallback data, loaded on demand)
 - Location tracking
   - `geo-track.js` (browser collector)
   - `_worker.js` + `wrangler.toml` (Cloudflare Worker logger)
@@ -25,7 +24,7 @@ Optional: a Cloudflare Worker (`_worker.js`) receives location telemetry from `g
 
 ## How to run locally
 - Quick preview: open `index.html`.
-  - Note: `album-data.json` is fetched only on `http(s)://`. On `file://`, album/book pages fall back to the generated `album-data.js`.
+  - Note: album/book pages fetch `album-data.json`, so use a local server rather than `file://`.
 - Recommended: run a local static server so fetch() works:
   - Python: `python -m http.server 8000`
   - Node: `npx serve .`
@@ -36,7 +35,7 @@ Optional: a Cloudflare Worker (`_worker.js`) receives location telemetry from `g
 - Photos:
   - Add images under `photos/` / `photos/album/...`.
   - Update `album-data.json`.
-  - Run `node tools/maintain-album-data.js` to regenerate `album-data.js` and validate paths.
+  - Run `node tools/maintain-album-data.js` to validate paths.
 - Album data shape (high level):
   - `cover`: `{ image, title, subtitle }`
   - `spreads[]`: `{ id, date, chapter, left, right, note }`
@@ -88,7 +87,7 @@ Privacy note: if you keep telemetry enabled, ensure you have the user’s consen
 
 ## Editing rules for assistants
 - Don't rename or move files referenced by HTML (`index.html`, `album.html`, `book.html`) unless you update all links.
-- Keep `album-data.json` and `album-data.js` consistent.
+- Treat `album-data.json` as the only source of truth for album/book content.
 - Avoid "auto-formatters" that may rewrite non-ASCII text/encoding unless you verify the rendered text still looks correct.
 - Don't commit secrets (tokens, API keys) into the repo.
 - When we introduce a new workflow/tooling option, propose new/updated rules for `Robot.md` and ask me to approve before writing them into the repo.

@@ -20,4 +20,4 @@ jobs:
           node-version: "20"
 
       - name: Validate album data
-        run: node tools/maintain-album-data.js
+        run: node tools/validate-album-data.js
