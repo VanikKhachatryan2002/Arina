@@ -29,6 +29,7 @@ Optional: a Cloudflare Worker (`_worker.js`) receives location telemetry from `g
 - Recommended: run a local static server so fetch() works:
   - Python: `python -m http.server 8000`
   - Node: `npx serve .`
+  - Repo-local option: `node tools/serve-local.js`
 
 ## Updating content
 - Music: put an MP3 at `audio/song.mp3`.
