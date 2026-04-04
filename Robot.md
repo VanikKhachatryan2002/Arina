@@ -16,7 +16,7 @@ Optional: a Cloudflare Worker (`_worker.js`) receives location telemetry from `g
 - Content
   - `photos/` (images) and `audio/song.mp3`
   - `album-data.json` (source of truth; hosted HTTP(S) use)
-  - `album-data.js` (generated file:// fallback: sets `window.__ALBUM_DATA__`)
+  - `album-data.js` (generated `file://` fallback data, loaded on demand)
 - Location tracking
   - `geo-track.js` (browser collector)
   - `_worker.js` + `wrangler.toml` (Cloudflare Worker logger)
@@ -25,7 +25,7 @@ Optional: a Cloudflare Worker (`_worker.js`) receives location telemetry from `g
 
 ## How to run locally
 - Quick preview: open `index.html`.
-  - Note: `album-data.json` is fetched only on `http(s)://`. If you open via `file://`, some pages may need `album-data.js`/inline data.
+  - Note: `album-data.json` is fetched only on `http(s)://`. On `file://`, album/book pages fall back to the generated `album-data.js`.
 - Recommended: run a local static server so fetch() works:
   - Python: `python -m http.server 8000`
   - Node: `npx serve .`
