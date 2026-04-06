@@ -12,6 +12,8 @@
     a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
     .btn.birthday{background:linear-gradient(135deg,#ff4d6d,#a586ff);color:#fff;border:0;box-shadow:0 12px 28px rgba(255,77,109,.22)}
     .btn.birthday:hover{box-shadow:0 16px 36px rgba(255,77,109,.26)}
+    .btn.april7{background:linear-gradient(135deg,#fff4d9,#ffc2d1,#f59bb7);color:#4b1d31;border:0;box-shadow:0 12px 28px rgba(245,155,183,.24)}
+    .btn.april7:hover{box-shadow:0 16px 36px rgba(245,155,183,.3)}
     .btn.march8{background:linear-gradient(135deg,#ff9acb,#ffd1e8,#fff1b8);color:#2a0f1c;border:0;box-shadow:0 12px 28px rgba(255,154,203,.25)}
     .btn.march8:hover{box-shadow:0 16px 36px rgba(255,154,203,.28)}
     .btn.newyear{background:linear-gradient(135deg,#8be9fd,#a586ff);color:#fff;border:0;box-shadow:0 12px 28px rgba(165,134,255,.22)}
