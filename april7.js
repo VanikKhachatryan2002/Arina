@@ -84,8 +84,6 @@ const sparkleRoses = (count = 12) => {
   }
 };
 
-let petalsTimer = window.setInterval(spawnPetal, 900);
-
 const openLetter = () => {
   if (!letterModal) return;
   letterModal.hidden = false;
@@ -237,7 +235,6 @@ window.addEventListener('keydown', (event) => {
 
 window.addEventListener('visibilitychange', () => {
   if (document.hidden) {
-    window.clearInterval(petalsTimer);
     if (bgm && !bgm.paused) {
       bgm.pause();
       setMusicState(false);
@@ -245,11 +242,13 @@ window.addEventListener('visibilitychange', () => {
     return;
   }
 
-  petalsTimer = window.setInterval(spawnPetal, 900);
   if (bgm && bgm.paused) {
     tryPlayMusic();
   }
 });
 
 spawnGlitter();
+burstPetals(10);
+burstRoses(6);
+sparkleRoses(8);
 page?.classList.add('is-loaded');

@@ -14,6 +14,7 @@
 * { box-sizing: border-box; }
 html, body { min-height: 100%; }
 html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: clip; }
 
 body {
   margin: 0;
@@ -83,7 +84,7 @@ body {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.72);
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.84);
-  animation: pulse 4s ease-in-out infinite;
+  animation: pulse 3.6s ease-out 1 forwards;
 }
 
 .topbar {
@@ -97,12 +98,17 @@ body {
   justify-content: space-between;
   gap: 12px;
   padding: 18px 22px;
+  max-width: 100vw;
+  overflow-x: clip;
 }
 
 .topbar__actions {
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  min-width: 0;
 }
 
 .topbar__back,
@@ -118,12 +124,27 @@ body {
   font-weight: 700;
   text-decoration: none;
   backdrop-filter: blur(12px);
+  transition: none;
+  transform: none;
+  animation: none;
+}
+
+.topbar__music {
+  min-width: 108px;
+  text-align: center;
 }
 
 .topbar__music.is-playing {
   background: linear-gradient(135deg, rgba(255, 244, 246, 0.96), rgba(255, 225, 233, 0.92));
   color: var(--rose-deep);
   border-color: rgba(217, 90, 134, 0.22);
+}
+
+.topbar__back:hover,
+.topbar__music:hover,
+.topbar__back:active,
+.topbar__music:active {
+  transform: none;
 }
 
 .page {
@@ -263,7 +284,7 @@ body {
     radial-gradient(circle, rgba(255, 255, 255, 0.12) 0 44%, transparent 46%),
     conic-gradient(from 0deg, rgba(255, 230, 238, 0.9), rgba(234, 208, 154, 0.82), rgba(255, 230, 238, 0.9));
   opacity: 0.92;
-  animation: rotateHalo 14s linear infinite;
+  animation: rotateHalo 14s linear 1 forwards;
 }
 
 .halo-ring::after {
@@ -282,7 +303,7 @@ body {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 244, 239, 0.86));
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
-  animation: floatPortrait 7s ease-in-out infinite;
+  animation: floatPortrait 5.4s ease-out 1 forwards;
 }
 
 .portrait__image {
@@ -315,7 +336,7 @@ body {
   font-weight: 700;
   white-space: nowrap;
   backdrop-filter: blur(14px);
-  animation: drift 7.5s ease-in-out infinite;
+  animation: drift 4.8s ease-out 1 forwards;
 }
 
 .orbit--top { top: 64px; left: 44px; }
@@ -869,11 +890,15 @@ body {
   .topbar {
     padding: 14px 12px;
     align-items: flex-start;
+    gap: 8px;
   }
 
   .topbar__actions {
     flex-direction: column;
     align-items: stretch;
+    justify-content: flex-start;
+    width: auto;
+    max-width: min(40vw, 120px);
   }
 
   .topbar__back,
@@ -956,6 +981,22 @@ body {
     gap: 22px;
     padding-top: 106px;
     padding-bottom: 34px;
+  }
+
+  .topbar {
+    padding: 10px 8px;
+    gap: 6px;
+  }
+
+  .topbar__back,
+  .topbar__music {
+    padding: 8px 10px;
+    font-size: 0.86rem;
+  }
+
+  .topbar__actions {
+    max-width: min(38vw, 108px);
+    gap: 6px;
   }
 
   .hero__title {
