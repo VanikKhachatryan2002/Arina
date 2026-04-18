@@ -12,3 +12,4 @@ Notes:
 - `album.html` and `book.html` now require `http/https` to load data, so use a local server for development.
 - For normal production use over `http/https`, pages load `album-data.json`.
 - For a local preview server with production-like loading, run `node tools/serve-local.js` and open `http://localhost:8000`.
+node tools/serve-local.js
