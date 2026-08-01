@@ -1,0 +1,300 @@
+<canvas id="fx"></canvas>
+  <main class="wrap">
+    
+    <section class="card" aria-label="Подарок любви — для Арины">
+      <!-- Gift -->
+      <a href="album.html" class="album-cta" aria-label="Открыть Книгу нашей любви">
+        <span class="album-cta__icon" aria-hidden="true">📖</span>
+        <span class="album-cta__text">
+          <strong>Книга нашей любви</strong>
+          <em>Открыть альбом с нашими моментами</em>
+        </span>
+        <span class="album-cta__badge">💗 новая</span>
+      </a>
+      <div class="badge" aria-live="polite">💌 <span id="greet">Привет, Арина</span></div>
+      <h1>Арина, это для тебя</h1>
+      <p class="sub">Раз ты любишь 🌹 розы и 🐱 котиков, я наполнил эту страницу дождём из роз и мягкими кошачьими следами. Пусть она будет как тёплые объятия — даже на расстоянии <strong>1000 км</strong>.</p>
+      <div class="btns">
+        <a class="btn april7" href="april7.html" aria-label="Открыть страницу 7 апреля">🌸 7 апреля</a>
+        <a class="btn march8" href="may8.html" aria-label="Открыть страницу 8 Марта">🌷 8 Марта</a>
+        <a class="btn birthday" href="birthday.html" aria-label="Открыть страницу дня рождения">&#127874; День рождения</a>
+        <a class="btn newyear" href="new-year.html" aria-label="Открыть новогоднюю страницу">&#127876; Новый год</a>
+        <a class="btn valentine" href="valentine.html" aria-label="Открыть страницу ко Дню святого Валентина">💝 День влюблённых</a>
+        <button class="btn" id="reveal">Открыть моё письмо</button>
+        <button class="btn secondary" id="play">▶️ Музыка</button>
+        <button class="btn secondary" id="hearts">💖 Сердечки</button>
+        <button class="btn secondary" id="petals">🌹 Дождь из роз</button>
+        <button class="btn secondary" id="paws">🐾 Следы котёнка</button>
+        <button class="btn secondary tab" id="angelTab"
+        aria-controls="angelTabPanel" aria-expanded="false">🕊️ Твой ангел</button>
+        <button class="btn secondary tab" id="sorryTab"
+        aria-controls="sorryPanel" aria-expanded="false">💗 Прости меня</button>
+      </div>
+      <section class="heart_section" style="margin-top:8px">
+          <div class="heart" id="loveHeart"></div>
+          <div id="pageHearts"></div>
+      </section>
+      <section class="tab-panel angel-panel" id="angelTabPanel" hidden>
+        <h2 class="angel-title">Светлая память</h2>
+
+        <div class="angel-portrait">
+          <span class="wing wing-l" aria-hidden="true"></span>
+          <span class="wing wing-r" aria-hidden="true"></span>
+          <img src="photos/aunt.webp" alt="Фото тёти — ангела Арины"
+              loading="lazy" decoding="async">
+        </div>
+                
+        <div class="angel-petals" id="angelPetals" aria-hidden="true"></div>
+        <p class="angel-whisper" id="angelWhisper">Спасибо за её свет.</p>
+        <p class="angel-text">
+          Дорогая Арина, давай оставим в нашем доме тёплый огонёк твоего ангела. Пусть это будет место, где слёзы можно — они про любовь и про то, как много она для тебя значила. Твоя тётя подарила тебе жизнь, и её свет живёт в тебе — в твоей доброте, смелости и нежности. Когда станет тяжело, не нужно держаться изо всех сил: я посижу рядом в тишине, согрею ладони и буду рядом столько, сколько нужно. Тебя бережёт небо, а здесь — я. Люблю.
+        </p>
+
+        <div class="angel-candle" role="img" aria-label="Горящая свеча">
+          <span class="flame"></span>
+          <span class="glow"></span>
+          <span class="wick"></span>
+        </div>
+        
+        <blockquote class="angel-quote">Любовь не исчезает — она становится светом, который ведёт домой.</blockquote>
+      
+      </section>
+      <section class="flip-card" aria-label="Открытка для Арины">
+          <div class="flip-inner" id="flipCard" role="button" tabindex="0"
+              aria-expanded="false" aria-label="Повернуть открытку">
+            <div class="flip-face flip-front">
+              <img src="photos/vanik-arina-card.webp" alt="Vanik ♥ Arina — розы и сердце">
+              <span class="hint">Нажми, чтобы перевернуть</span>
+            </div>
+            <div class="flip-face flip-back">
+            <div class="back-content">
+                <h3>Дорогая Арина</h3>
+                <p>Ты — самый драгоценный дар моей судьбы, сокровище, которое я никогда не отпущу.</p>
+                <p>Твоя любовь — дыхание моей души, сила, что ведёт меня сквозь тьму к свету.</p>
+                <p>Рядом с тобой моя жизнь превращается в сад смысла, где каждое утро расцветает необыкновенная красота.</p>
+                <p>С тобой жизнь полна смысла и сияет бесконечной красотой.</p>
+                <p class="sig">Люблю тебя бесконечно. Твой Ваник.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="poem" id="poem">
+    <div class="poem-head">
+      <div class="tag">Вселенная моей любви</div>
+      <div class="poem-ctrl">
+        <button class="btn secondary" id="poemPlay" aria-pressed="false">▶️ Автопрогон</button>
+        <button class="btn secondary" id="poemNext">Дальше</button>
+      </div>
+    </div>
+
+    <!-- Основной дисплей строки -->
+    <div class="poem-display" id="poemDisplay" aria-live="polite">
+      Знаешь, как я тебя люблю?
+    </div>
+
+    <!-- Сетка чипсов-метафор -->
+    <div class="poem-grid" id="poemGrid">
+      <button class="chip" data-key="sun"   data-text="Как солнце — ты озаряешь мои дни, даришь тепло и жизнь.">☀️<span>Солнце</span></button>
+      <button class="chip" data-key="moon"  data-text="Как луна — ты моё ночное сияние, нежное и вечное.">🌙<span>Луна</span></button>
+      <button class="chip" data-key="stars" data-text="Как звёзды — ты мои бесчисленные путеводные огни, что ведут меня в темноте.">✨<span>Звёзды</span></button>
+      <button class="chip" data-key="sea"   data-text="Как море — моя любовь к тебе глубока, безмерна и вечно волнуется.">🌊<span>Море</span></button>
+      <button class="chip" data-key="sky"   data-text="Как небо — широкая и светлая, там летают наши мечты.">☁️<span>Небо</span></button>
+      <button class="chip" data-key="flower" data-text="Как цветок — ты распускаешься в моём мире, наполняя дни ароматом.">🌸<span>Цветок</span></button>
+      <button class="chip" data-key="newborn" data-text="Как новорождённый — ты приносишь каждому утру новую искру и чистоту.">👶<span>Новорожд.</span></button>
+      <button class="chip" data-key="nature" data-text="Как природа — ты наполняешь меня жизнью, покоем и смыслом.">🍃<span>Природа</span></button>
+      <button class="chip" data-key="mount" data-text="Как горы — моя любовь к тебе прочна, нерушима и вечна.">⛰️<span>Горы</span></button>
+      <button class="chip" data-key="stone" data-text="Как камни — она неизменна и непоколебима.">🪨<span>Камни</span></button>
+      <button class="chip" data-key="gold"  data-text="Как золото — ты чиста и бесценна в моём сердце.">🏆<span>Золото</span></button>
+      <button class="chip" data-key="wind"  data-text="Как ветер — моё стремление к тебе свободно и бесконечно.">🌬️<span>Ветер</span></button>
+      <button class="chip" data-key="music" data-text="Как музыка — ты звучишь в моей душе, создавая гармонию.">🎵<span>Музыка</span></button>
+      <button class="chip" data-key="water" data-text="Как вода — ты источник моей жизни, вечно текущий к сердцу.">💧<span>Вода</span></button>
+      <button class="chip" data-key="fire"  data-text="Как огонь — я люблю тебя страстно, жгуче и неугасимо.">🔥<span>Огонь</span></button>
+      <button class="chip" data-key="volcano" data-text="Как вулкан — моя любовь извергается силой и наполняет весь мир тобой.">🌋<span>Вулкан</span></button>
+      <button class="chip" data-key="oxygen" data-text="Как кислород — ты моё дыхание, без тебя я не могу жить.">🫁<span>Кислород</span></button>
+      <button class="chip" data-key="life"  data-text="Как сама жизнь — ты моё бытие и единственный смысл.">♾️<span>Жизнь</span></button>
+      <button class="chip" data-key="heart" data-text="Как моё сердце — целое, искреннее и бьющееся только для тебя.">❤️<span>Сердце</span></button>
+    </div>
+
+    <p class="poem-final" id="poemFinal">Ты — моя единственная и неповторимая.</p>
+  </section>
+
+      <section class="bouquet" id="bouquet">
+        <div class="bouquet-head">
+          <div class="tag">Сегодняшний букет</div>
+          <div class="progress"><span id="bqCount">0</span>/6 — собери букет 🌹</div>
+        </div>
+
+        <div class="buds">
+          <button class="bud" data-text="Ты — мой самый драгоценный дар.">🌹</button>
+          <button class="bud" data-text="Твоя любовь — дыхание моей души.">🌹</button>
+          <button class="bud" data-text="С тобой каждый день расцветает.">🌹</button>
+          <button class="bud" data-text="Я рядом: мягко, бережно, с заботой.">🌹</button>
+          <button class="bud" data-text="Твоё сердце — мой дом и свет.">🌹</button>
+          <button class="bud" data-text="Спасибо, что ты есть, любимая.">🌹</button>
+        </div>
+
+        <div class="petal-note" id="bqNote" aria-live="polite"></div>
+
+        <div class="surprise" id="bqDone" hidden>
+          <h4>Сюрприз дня ✨</h4>
+          <p>Сегодня всё для тебя: любимая песня, тёплая история про котиков и моё время — столько, сколько захочешь. Позовёшь — я рядом.</p>
+        </div>
+      </section>
+      <section class="tab-panel sorry-panel" id="sorryPanel" hidden>
+      <h2 class="sorry-title">От моего сердца к твоему</h2>
+
+      <div class="heart-stitch" aria-hidden="true">
+        <svg viewBox="0 0 200 180" class="heart-svg">
+          <path class="heart"
+                d="M100 160 C10 100, 20 40, 60 30
+                  C85 25, 100 45, 100 58
+                  C100 45, 115 25, 140 30
+                  C180 40, 190 100, 100 160Z"/>
+          <path class="crack"
+                d="M100 58 L95 70 L105 82 L98 95 L108 110 L100 125"/>
+          <path class="stitch"
+                d="M100 58 L95 70 L105 82 L98 95 L108 110 L100 125"/>
+        </svg>
+      </div>
+
+      <p class="sorry-text">
+      Дорогая Арина,
+
+Я люблю тебя безмерно и никогда не хочу причинять тебе боль. Бывает, что моя любовь усиливает во мне всё вдвое — слова, эмоции, шаги — и из-за этого я могу звучать строже, чем чувствую. Прости меня за то, чем я тебя огорчил. Я слышу тебя и понимаю, как важно бережно относиться к твоему сердцу.
+
+Я разбираю каждый наш шаг, делаю выводы и меняюсь, чтобы подобное больше не повторялось. Хочу быть рядом так, как тебе спокойно и тепло: внимательным, мягким и терпеливым.
+
+Ты — моя ценность, моё «невозможно без тебя». Ты бесценна для меня, и с тобой я учусь быть лучше каждый день. Если вдруг станет тяжело — я рядом, чтобы обнять, молчать, слушать и понимать.
+
+Люблю. Твой Ваник. <span class="soft-note">Սիրում եմ քեզ</span>
+      </p>
+
+    <div class="promises" id="promises">
+      <button class="promise" data-text="Сначала выслушаю до конца — без перебиваний.">🌹</button>
+      <button class="promise" data-text="Буду говорить мягко, даже когда эмоций много.">🌹</button>
+      <button class="promise" data-text="Если обидел — признаю, извинюсь и исправлюсь.">🌹</button>
+      <button class="promise" data-text="Буду думать и делать выводы, чтобы это не повторялось.">🌹</button>
+      <button class="promise" data-text="Когда тебе тяжело — просто буду рядом: обниму и помолчу.">🌹</button>
+    </div>
+
+      <p class="sorry-small">Нажми на розы — они раскроются в мои обещания.</p>
+    </section>
+      <div class="row" style="margin-top:8px">
+        <div class="col"><div class="tag">Напоминания</div>
+          <div class="quotes" id="quotes" aria-live="polite"></div>
+          <ul style="margin:.3rem 0 0; padding-left:1.1rem; font-size:15px">
+            <li>Виртуальные букеты — без границ 💐</li>
+            <li>Новая история про котиков — в ближайшем звонке 🐈</li>
+          </ul>
+        </div>
+        <div class="col"><div class="tag">Фотографии</div>
+        <div class="gallery" id="gallery">
+              <figure>
+                <img
+                  src="photos/arina6.webp"
+                  alt="Арина"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+              <figure>
+                <img
+                  src="photos/arina5.webp"
+                  alt="Арина"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+            <figure>
+                <img
+                  src="photos/rose-bouquet.webp"
+                  alt="Букет роз"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+              <figure>
+                <img
+                  src="photos/arina-cat.webp"
+                  alt="Любимый котик"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+            <figure>
+                <img 
+                    src="photos/arina.webp"  
+                    alt="Арина"
+                    loading="lazy" 
+                    decoding="async">
+              </figure>
+              <figure>
+                <img
+                  src="photos/arina2.webp"
+                  alt="Арина"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+              <figure>
+                <img
+                  src="photos/arina3.webp"
+                  alt="Арина"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+              <figure>
+                <img
+                  src="photos/arina4.webp"
+                  alt="Арина"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+              <figure>
+                <img
+                  src="photos/our-screen-moment.webp"
+                  alt="Наш любимый момент"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+            <figure>
+                <img
+                  src="photos/rose-closeup.webp"
+                  alt="Роза крупным планом"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width:480px) 48vw, (max-width:800px) 33vw, 300px">
+              </figure>
+          </div>
+        </div>
+        <div class="col"><div class="tag">Мини‑открытки</div>
+          <div class="ribbon">
+            <div class="hint">Листай вбок 👉 (скролл‑лента)</div>
+            <div class="scroller">
+              <div class="cardlet"><span class="badge-rose">🌹 Розовый привет</span><h4>Твоя улыбка — мой рассвет</h4><p>Каждый твой смех пахнет розами. Я слышу его даже издалека.</p></div>
+              <div class="cardlet"><span class="badge-rose">🐾 Мягкий шаг</span><h4>Котёнок на душе</h4><p>С тобой внутри тихо мурчит уют, и всё становится спокойнее.</p></div>
+              <div class="cardlet"><span class="badge-rose">💌 Слова</span><h4>Письма между нами</h4><p>Каждое твоё «привет» — как новый бутон, который раскрывается.</p></div>
+              <div class="cardlet"><span class="badge-rose">✨ Свет</span><h4>Ты — мой тёплый огонёк</h4><p>В любую погоду, в любом городе — ты рядом.</p></div>
+              <div class="cardlet"><span class="badge-rose">🎶 Нота</span><h4>Наша мелодия</h4><p>Пусть музыка на этой странице звучит только для тебя.</p></div>
+              <div class="cardlet"><span class="badge-rose">🌙 Вечер</span><h4>Сон с розовым сном</h4><p>Пусть эта лента станет тебе мягким пожеланием доброй ночи.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <article class="col" style="margin-top:10px">
+        <div class="tag">Личное письмо</div>
+        <h3>Дорогая Арина,</h3>
+        <div class="letter" id="letter">
+
+Твои любимые розы раскрываются и наполняют день ароматом, так же
+как ты наполняешь мой день улыбкой. А как котёнок, тихо и тепло,
+я хочу сидеть рядом с тобой — даже за 1000 километров — и делиться
+нашим маленьким уютом.
+
+Эта страница — маленький сад для тебя: ветер сердечек, дождь из роз
+и следы котёнка, напоминающие: куда бы мы ни шли, я рядом.
+
+С любовью,
+Ваник 💗
+        </div>
+      </article>
+      <div class="footer">
+        <span class="tiny" id="date"></span>
+      </div>
+      <audio id="bgm" preload="auto"><source src="audio/song.mp3" type="audio/mpeg" /></audio>
+    </section>
+  </main>

@@ -242,22 +242,27 @@
     pages.forEach((p) => tmp.appendChild(p));
 
     const calcSize = () => {
-      const w = Math.min(1200, Math.max(720, window.innerWidth - 80));
-      const h = Math.min(1000, Math.max(520, window.innerHeight - 220));
-      return { width: w, height: h };
+      const containerWidth = Math.max(280, bookEl.clientWidth || window.innerWidth - 32);
+      const portrait = containerWidth < 760;
+      const availableHeight = Math.max(420, window.innerHeight - (portrait ? 190 : 220));
+      const width = portrait
+        ? Math.min(520, containerWidth - 12)
+        : Math.min(620, (containerWidth - 28) / 2);
+      const height = Math.min(880, availableHeight, Math.max(420, width * 1.38));
+      return { width: Math.round(width), height: Math.round(height), portrait };
     };
     const baseSize = calcSize();
 
     flip = new FlipCtor(bookEl, {
-      ...baseSize,
+      width: baseSize.width,
+      height: baseSize.height,
       size: "stretch",
-      minWidth: 520,
-      maxWidth: 1600,
-      minHeight: 420,
-      maxHeight: 1100,
+      minWidth: 280,
+      maxWidth: 620,
+      minHeight: 400,
+      maxHeight: 880,
       showCover: true,
-      usePortrait: false,
-      viewMode: "double",
+      usePortrait: true,
       maxShadowOpacity: 0.35,
       drawShadow: true,
       flippingTime: 820,
@@ -273,7 +278,7 @@
 
     const resize = () => {
       const sz = calcSize();
-      flip.update({ width: sz.width, height: sz.height, viewMode: "double", usePortrait: false });
+      flip.update({ width: sz.width, height: sz.height, usePortrait: true });
     };
     addEventListener("resize", resize, { passive: true });
   }else{

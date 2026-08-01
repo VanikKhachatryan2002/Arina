@@ -300,6 +300,11 @@
   animation: swim 6s linear forwards;
 }
 
+.love-floating--managed {
+  animation: none;
+  will-change: transform, opacity;
+}
+
 @keyframes swim {
   0% {
     transform: translate(0, 0) scale(1);

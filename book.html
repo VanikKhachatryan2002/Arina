@@ -1,63 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
+<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Любимая книга | Ваник и Арина</title>
   <meta name="description" content="Листай нашу историю: фото, главы и заметки в формате книги." />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="https://unpkg.com/page-flip/dist/css/page-flip.min.css" />
-  <link rel="stylesheet" href="book.css" />
 </head>
-<body class="book-body">
-  <header class="book-header">
-    <a class="back" href="album.html">< Назад к альбому</a>
-    <div class="titles">
-      <p class="eyebrow">Vanik &amp; Arina</p>
-      <h1>Наша история</h1>
-      <p class="lede">Листай страницы, смотри фото, читай заметки.</p>
-    </div>
-    <div class="header-meta" id="headerMeta">0 разворотов</div>
-  </header>
-
-  <main class="book-layout">
-    <section class="book-frame" aria-label="Книга">
-      <div id="book" aria-live="polite"></div>
-      <div class="book-shadow" aria-hidden="true"></div>
-      <div class="love-ambient" aria-hidden="true">
-        <span>❤</span><span>♥</span><span>❤</span><span>♥</span><span>❤</span><span>♥</span>
-      </div>
-    </section>
-    <aside class="notes-panel" aria-label="Заметки для текущего разворота">
-      <div class="notes-head">
-        <div id="noteTitle">Выберите страницу</div>
-        <div id="noteDate"></div>
-      </div>
-      <div id="noteText" class="note-text">Здесь будут заметки для выбранного разворота.</div>
-    </aside>
-  </main>
-
-  <div class="controls">
-    <div class="left">
-      <button id="prevPage" class="pill" title="Предыдущая страница">‹</button>
-      <button id="nextPage" class="pill" title="Следующая страница">›</button>
-    </div>
-    <div class="center" id="pageIndicator">-- / --</div>
-    <div class="right">
-      <button id="autoPlay" class="ghost pill" aria-pressed="false" title="Автопрокрутка">Автопрокрутка</button>
-    </div>
-  </div>
-
-  <div id="bookViewer" hidden>
-    <button class="close" aria-label="Закрыть">×</button>
-    <img alt="" />
-  </div>
-
-  <script src="https://unpkg.com/page-flip/dist/js/page-flip.browser.min.js"></script>
-  <script src="album-shared.js"></script>
-  <script defer src="book.js"></script>
-  <script>window.__LOCATION_ENDPOINT = "https://arina.vanikkhachatryan2002.workers.dev";</script>
-  <script defer src="geo-track.js"></script>
-
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/entries/book.jsx"></script>
 </body>
 </html>

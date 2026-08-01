@@ -1,0 +1,131 @@
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="back" href="index.html" aria-label="Назад на главную">← На главную</a>
+    <div class="topbar__right">
+      <button class="ghost" id="musicToggle" type="button" aria-pressed="true">🎵 Мелодия</button>
+      <a class="ghost" href="album.html" aria-label="Открыть нашу книгу воспоминаний">Наша книга</a>
+      <button class="ghost" id="sparkleBtn" type="button">✨ Сюрприз</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card hero" aria-label="Поздравление для Арины">
+      <p class="eyebrow">Для моей Арины</p>
+      <h1>С Днём святого Валентина</h1>
+      <p class="lead">
+        14 февраля 2026 — день, когда я хочу сказать тебе главное: ты — моя нежность, мой свет
+        и моя вселенная. Ты делаешь мир тёплым даже на расстоянии, и каждое мгновение с тобой —
+        как маленькое чудо.
+      </p>
+
+      <div class="hero__grid">
+        <div class="rose-panel" aria-hidden="true">
+          <div class="rose-panel__shine"></div>
+          <div class="rose-panel__petals"></div>
+          <div class="rose-panel__label">Розы для тебя</div>
+        </div>
+        <div class="heart-orb" aria-hidden="true">
+          <div class="rose-ring"></div>
+          <div class="heart-mist"></div>
+          <div class="orb"></div>
+          <div class="orb-heart"></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="toggleLetter" type="button">Открыть письмо</button>
+        <button class="btn secondary" id="bloom" type="button">Рассыпать лепестки</button>
+        <button class="btn secondary" id="heartShow" type="button">Сердечное сияние</button>
+        <a class="btn secondary" href="album.html">Наши воспоминания</a>
+      </div>
+    </section>
+
+    <section class="card letter-card" aria-label="Открытка для Арины">
+      <div class="container" id="valentineCard">
+        <div class="valentines" role="button" tabindex="0" aria-expanded="false" aria-controls="valentineText">
+          <div class="envelope"></div>
+          <div class="front"></div>
+          <div class="card-inner">
+            <div class="text" id="valentineText">Счастливого<br> Дня<br> Валентина!</div>
+            <div class="heart"></div>
+          </div>
+          <div class="hearts">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four"></div>
+            <div class="five"></div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+      <p class="hint">Наведи или нажми на открытку, чтобы она раскрылась.</p>
+    </section>
+
+    <section class="card moments" aria-label="Моменты и любовь">
+      <div class="moments__head">
+        <h2>Три мгновения, в которых я тебя берегу</h2>
+        <p>Розы, твоя улыбка и уют, который ты даришь — это мои любимые кадры.</p>
+      </div>
+      <div class="moments__grid">
+        <figure class="moment-card moment-card--light">
+          <div class="moment-card__art"></div>
+          <figcaption>Твой свет.</figcaption>
+        </figure>
+        <figure class="moment-card moment-card--cozy">
+          <div class="moment-card__art"></div>
+          <figcaption>Наш уют.</figcaption>
+        </figure>
+        <figure class="moment-card moment-card--tender">
+          <div class="moment-card__art"></div>
+          <figcaption>Твоя нежность.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="card romantic" aria-label="Романтическое письмо">
+      <div class="romantic__head">
+        <div class="romantic__tag">Тёплые слова</div>
+        <h2>Арина, ты моя вселенная</h2>
+      </div>
+      <div class="romantic__body">
+        <p>Я люблю тебя нежно и глубоко. Ты — мой дом, где всегда тепло, и мой путь, который ведёт к свету.</p>
+        <p>Пусть этот День святого Валентина станет маленьким праздником твоего сердца. Я рядом в каждой мысли, в каждом вздохе и в каждом шаге.</p>
+        <p>Спасибо, что ты есть. Люблю тебя бесконечно.</p>
+        <div class="romantic__sign">Твой Ваник</div>
+      </div>
+    </section>
+
+    <section class="card vows" aria-label="Мои слова для тебя">
+      <h2>Обещания сердца</h2>
+      <div class="vows__grid" id="vows">
+        <button class="vow" data-text="Всегда говорить с тобой мягко и бережно.">💞</button>
+        <button class="vow" data-text="Быть рядом, когда тебе тихо или тревожно.">🌙</button>
+        <button class="vow" data-text="Сохранять наш уют, как самое ценное.">🏡</button>
+        <button class="vow" data-text="Делать тебя счастливой каждый день.">✨</button>
+        <button class="vow" data-text="Слушать и понимать тебя сердцем.">🤍</button>
+        <button class="vow" data-text="Любить тебя всё глубже, без конца.">♾️</button>
+      </div>
+      <p class="vows__note" id="vowNote">Нажми на символ — и я прошепчу обещание.</p>
+    </section>
+
+    <audio id="bgm" preload="auto" loop>
+      <source src="audio/solamente-tu.mp3" type="audio/mpeg" />
+    </audio>
+
+    <footer class="footer">
+      <p class="signature">Навсегда твой, Ваник.</p>
+      <span class="tiny" id="date"></span>
+    </footer>
+  </main>
+
+  <div class="heart-modal" id="heartModal" hidden>
+    <div class="heart-modal__backdrop" data-close="heart"></div>
+    <div class="heart-modal__card" role="dialog" aria-modal="true" aria-label="Сердечное сияние">
+      <button class="heart-modal__close" id="heartClose" type="button" aria-label="Закрыть">×</button>
+      <canvas id="pinkboard" aria-hidden="true"></canvas>
+      <div class="heart-modal__caption">Для тебя, Арина. Пусть сердце говорит светом.</div>
+    </div>
+  </div>

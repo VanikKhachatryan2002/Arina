@@ -1,0 +1,59 @@
+<main class="wrap">
+    <section class="book" aria-label="Книга нашей любви — Vanik & Арина">
+      <div class="head">
+        <a class="back" href="index.html" aria-label="Назад на главную">← <span>Назад</span></a>
+        <h1 class="title">Книга нашей любви — Ваник & Арина</h1>
+      </div>
+
+      <div class="toc" id="toc"><!-- Главы --></div>
+
+      <div class="meta">
+        <span class="chip">Разворотов: <b id="metaSpreads">0</b></span>
+        <span class="chip">Страница: <b id="metaPage">—</b></span>
+      </div>
+
+      <div class="stage" id="stage"><!-- Книга --></div>
+
+      <div class="ctrls">
+        <div class="left">
+          <button class="btn pill" id="prev">← Назад</button>
+          <button class="btn pill" id="next">Вперёд →</button>
+        </div>
+        <div class="right">
+          <button id="notesBtn" class="btn secondary pill ctl" aria-haspopup="dialog">📝 Заметки</button>
+          <button class="btn secondary pill" id="autoplay" aria-pressed="false">▶️ Автопролистывание</button>
+          <button class="btn secondary pill" id="share">🔗 Поделиться</button>
+          <button id="chaptersBtn" class="btn secondary pill ctl" aria-haspopup="dialog">📖 Главы</button>
+        </div>
+        <div class="index" id="indexInfo">—</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="turnScroller" aria-hidden="true">
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+  </div>
+  <div id="turnHint" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <div id="viewer" hidden>
+    <button class="close" aria-label="Закрыть">✕</button>
+    <img alt="Просмотр фото">
+  </div>
+
+  <div id="notesModal" class="modal" hidden>
+  <div class="modal__backdrop"></div>
+  <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="notesTitle">
+    <button class="modal__close" id="notesClose" aria-label="Закрыть">×</button>
+    <h3 id="notesTitle">Заметки главы</h3>
+    <div id="notesBody" class="modal__content"></div>
+  </div>
+</div>    
+
+<div id="chaptersModal" class="modal" hidden>
+  <div class="modal__backdrop"></div>
+  <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="chaptersTitle">
+    <button class="modal__close" id="chaptersClose" aria-label="Закрыть">×</button>
+    <h3 id="chaptersTitle">Главы книги</h3>
+    <div id="chaptersBody" class="modal__content"></div>
+  </div>
+</div>
