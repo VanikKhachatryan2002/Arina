@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { ParametricLoveHeart } from "../components/ParametricLoveHeart.jsx";
 
 const LETTER = [
   "Арина, любовь моя, мой воздух…",
@@ -157,6 +158,8 @@ export function AnniversaryPage() {
           ))}
         </div>
       </section>
+
+      <ParametricLoveHeart />
 
       <section className={`promise-scene ${connected ? "is-connected" : ""}`} data-reveal>
         <div className="mountains" aria-hidden="true"><i /><i /><i /></div>
