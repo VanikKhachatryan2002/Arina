@@ -3,6 +3,8 @@ name: Validate Album Data
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - "logs/**"
   pull_request:
     branches: ["main"]
   workflow_dispatch:
