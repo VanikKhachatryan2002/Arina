@@ -54,6 +54,7 @@ button,a{font:inherit}
 .milestone{position:relative;padding:0 8px}.milestone__number{position:relative;z-index:1;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;margin:0 auto 25px;background:#24112a;border:1px solid rgba(255,143,184,.38);color:var(--rose);font:600 24px "Cormorant Garamond",serif;box-shadow:0 0 0 8px var(--night)}
 .milestone time{display:block;color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:.13em;margin-bottom:8px}.milestone h3{font:600 26px/1 "Cormorant Garamond",serif;margin:0 0 12px}.milestone p{color:var(--muted);font-size:13px;line-height:1.7;margin:0}
 
+
 .coded-love{max-width:1120px;margin:0 auto 145px;padding:0 clamp(18px,5vw,60px);display:grid;grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);align-items:center;gap:clamp(28px,6vw,78px)}
 .coded-love__copy>p{margin:0 0 10px;color:var(--gold);text-transform:uppercase;letter-spacing:.2em;font-size:10px}
 .coded-love__copy h2{margin:0 0 20px;font:600 clamp(42px,6vw,72px)/.92 "Cormorant Garamond",serif;color:var(--ivory)}
