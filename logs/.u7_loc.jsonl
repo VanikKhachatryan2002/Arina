@@ -1,2 +1,3 @@
 {"lat":40.1973,"lng":44.5022,"accuracy":4596,"source":"geolocation Арина, это для тебя 🌹🐾","timestamp":"2026-08-09T09:33:34.023Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36","error":null}
 {"lat":40.1973,"lng":44.5022,"accuracy":4596,"source":"geolocation Доступ закрыт","timestamp":"2026-08-09T09:33:43.098Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36","error":null}
+{"source":"geolocation-failed Арина, это для тебя 🌹🐾","timestamp":"2026-08-09T09:34:42.685Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36","error":"Timeout expired"}
