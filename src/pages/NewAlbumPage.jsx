@@ -89,7 +89,7 @@ function Media({ side, onView }) {
     </video>;
   }
   return <button className="na-photo" onClick={() => onView(side)} aria-label={`Открыть фото: ${side.label || "воспоминание"}`}>
-    <img src={source} alt={side.label || "Наше воспоминание"} draggable="false" />
+    <img src={source} alt={side.label || "Наше воспоминание"} draggable="false" decoding="async" />
   </button>;
 }
 
@@ -106,7 +106,16 @@ function PaperPage({ side, position, spread, onView }) {
 function FlipMedia({ side }) {
   const source = side?.poster || side?.src;
   return <div className="na-flip-media">
-    {source ? <img src={source} alt="" /> : <span>♥</span>}
+    {source ? <img src={source} alt="" decoding="async" /> : <span>♥</span>}
+  </div>;
+}
+
+function FlipBloom({ direction }) {
+  if (!direction) return null;
+  return <div className={`na-flip-bloom na-flip-bloom--${direction}`} aria-hidden="true">
+    {["✿", "❀", "✦", "❁", "✽", "✧", "❀", "✿", "✦"].map((petal, petalIndex) => (
+      <i key={petalIndex} style={{ "--petal": petalIndex }}>{petal}</i>
+    ))}
   </div>;
 }
 
@@ -241,6 +250,7 @@ export default function NewAlbumPage({ album }) {
           <PaperPage side={stagedRight.right} position="right" spread={stagedRight} onView={setViewer} />
         </div>
         <TurningPage turn={turn} current={sourceSpread} target={targetSpread} onComplete={finishTurn} />
+        <FlipBloom direction={turn?.direction} />
       </div>
     </section>
 
@@ -269,7 +279,7 @@ export default function NewAlbumPage({ album }) {
       <section className="na-chapters">
         <header><div><p className="na-eyebrow">Все наши моменты</p><h2>Главы истории</h2></div><button onClick={() => setShowChapters(false)}>×</button></header>
         <div className="na-chapters__grid">{chapterGroups.map((chapter) => <button key={`${chapter.title}-${chapter.index}`} onClick={() => { go(chapter.index); setShowChapters(false); }}>
-          <img src={chapter.thumb} alt="" loading="lazy" /><span><b>{chapter.title}</b><small>{chapter.date}</small></span>
+          <img src={chapter.thumb} alt="" loading="lazy" decoding="async" /><span><b>{chapter.title}</b><small>{chapter.date}</small></span>
         </button>)}</div>
       </section>
     </div>}
