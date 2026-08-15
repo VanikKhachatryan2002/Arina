@@ -149,6 +149,7 @@ export default function NewAlbumPage({ album }) {
   const [showChapters, setShowChapters] = useState(false);
   const touchStart = useRef(null);
   const turnTimer = useRef(null);
+  const midpointTimer = useRef(null);
   const spreads = album.spreads || [];
   const spread = spreads[index];
 
@@ -157,16 +158,22 @@ export default function NewAlbumPage({ album }) {
     const target = Math.max(0, Math.min(spreads.length - 1, nextIndex));
     if (target === index || turn) return;
     const direction = target > index ? "next" : "previous";
-    setTurn({ direction, target });
+    setTurn({ direction, source: index, target });
     setShowNote(false);
+    midpointTimer.current = window.setTimeout(() => {
+      setIndex(target);
+    }, 540);
     // Safety fallback only; the normal swap is synchronized to animationend.
     turnTimer.current = window.setTimeout(() => {
       setIndex(target);
       setTurn(null);
-    }, 1100);
+    }, 1450);
   }, [index, spreads.length, turn]);
 
-  useEffect(() => () => window.clearTimeout(turnTimer.current), []);
+  useEffect(() => () => {
+    window.clearTimeout(midpointTimer.current);
+    window.clearTimeout(turnTimer.current);
+  }, []);
 
   useEffect(() => {
     const handler = (event) => {
@@ -198,10 +205,12 @@ export default function NewAlbumPage({ album }) {
   })), [album.cover?.image, spreads]);
 
   const targetSpread = spreads[turn?.target] || spread;
+  const sourceSpread = spreads[turn?.source] || spread;
   const stagedLeft = turn?.direction === "previous" ? targetSpread : spread;
   const stagedRight = turn?.direction === "next" ? targetSpread : spread;
 
   const finishTurn = useCallback((target) => {
+    window.clearTimeout(midpointTimer.current);
     window.clearTimeout(turnTimer.current);
     setIndex(target);
     setTurn(null);
@@ -231,7 +240,7 @@ export default function NewAlbumPage({ album }) {
           <PaperPage side={stagedLeft.left} position="left" spread={stagedLeft} onView={setViewer} />
           <PaperPage side={stagedRight.right} position="right" spread={stagedRight} onView={setViewer} />
         </div>
-        <TurningPage turn={turn} current={spread} target={targetSpread} onComplete={finishTurn} />
+        <TurningPage turn={turn} current={sourceSpread} target={targetSpread} onComplete={finishTurn} />
       </div>
     </section>
 
