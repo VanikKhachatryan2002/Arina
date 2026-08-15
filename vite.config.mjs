@@ -4,7 +4,7 @@ import { cp, mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = process.cwd();
-const pages = ["index", "album", "book", "april7", "birthday", "may8", "new-year", "valentine", "anniversary"];
+const pages = ["index", "album", "new-album", "book", "april7", "birthday", "may8", "new-year", "valentine", "anniversary"];
 const staticEntries = ["assets", "audio", "photos", "videos", "album-data.json", ".nojekyll"];
 
 function copyStaticAssets() {
