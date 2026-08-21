@@ -110,3 +110,36 @@
   .silence-page .rose .rose-leaf--left{top:42px;right:1px;width:24px;height:10px}
   .silence-page .rose .rose-leaf--right{top:73px;left:3px;width:21px;height:9px}
 }
+
+/* Atmospheric garden: a small set of reusable SVG roses, staggered behind the main scene. */
+.ambient-garden{position:fixed;inset:60px 0 0;z-index:-1;overflow:hidden;pointer-events:none;mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 88%,transparent 100%)}
+.ambient-rose{position:absolute;left:var(--ambient-x);bottom:var(--ambient-bottom);width:100px;height:calc(var(--ambient-stem-height) + 76px);opacity:var(--ambient-opacity);filter:blur(var(--ambient-blur));transform:translateX(-50%) scale(var(--ambient-scale));transform-origin:50% 100%;animation:ambient-sway 7.8s calc(var(--ambient-delay) + 3.2s) ease-in-out infinite alternate}
+.ambient-rose__stem{position:absolute;left:48px;bottom:0;width:3px;height:var(--ambient-stem-height);border-radius:100% 100% 0 0;background:linear-gradient(90deg,#260812,#a33643 48%,#3b0914);box-shadow:0 0 5px rgba(255,61,96,.28),0 0 13px rgba(123,13,43,.16);transform:scaleY(0);transform-origin:bottom;animation:ambient-stem-grow 1.65s var(--ambient-delay) cubic-bezier(.22,.72,.18,1) forwards}
+.ambient-rose__stem:before{content:"";position:absolute;inset:-3px -5px;background:radial-gradient(ellipse,rgba(163,23,58,.16),transparent 70%);filter:blur(5px)}
+.ambient-rose__leaf{position:absolute;width:30px;height:13px;background:linear-gradient(145deg,#a62b43,#3b0b1a 76%);opacity:0;box-shadow:0 0 7px rgba(255,50,91,.3);animation:ambient-leaf-open .8s calc(var(--ambient-delay) + .75s) ease-out forwards}
+.ambient-rose__leaf--left{right:1px;top:38%;border-radius:100% 7% 100% 7%;transform-origin:100% 50%}
+.ambient-rose__leaf--right{left:3px;top:62%;width:26px;border-radius:7% 100% 7% 100%;transform-origin:0 50%;animation-delay:calc(var(--ambient-delay) + 1.05s)}
+.ambient-rose__bloom{position:absolute;z-index:2;left:0;bottom:calc(var(--ambient-stem-height) - 17px);width:100px;height:84px;overflow:visible;transform-origin:50% 75%;animation:ambient-bloom-sway 6.5s calc(var(--ambient-delay) + 2.8s) ease-in-out infinite alternate}
+.ambient-rose__petals{fill:#b20b35;opacity:0;transform-box:fill-box;transform-origin:50% 85%;filter:drop-shadow(0 0 3px rgba(255,113,139,.8)) drop-shadow(0 0 9px rgba(235,20,69,.62)) drop-shadow(0 3px 4px rgba(23,0,8,.8));animation:ambient-petal-open 1.15s calc(var(--ambient-delay) + 1.35s) cubic-bezier(.16,.78,.22,1) forwards}
+.ambient-rose__petals--middle{fill:#e22955;filter:drop-shadow(0 0 4px rgba(255,150,170,.9)) drop-shadow(0 0 11px rgba(244,34,81,.68));animation-delay:calc(var(--ambient-delay) + 1.65s)}
+.ambient-rose__petals--inner{fill:#ff7893;filter:drop-shadow(0 0 3px #ffd1da) drop-shadow(0 0 10px rgba(255,61,103,.95));animation-delay:calc(var(--ambient-delay) + 1.95s)}
+.ambient-rose__aura{position:absolute;z-index:0;left:50%;bottom:calc(var(--ambient-stem-height) - 1px);width:112px;height:94px;border-radius:50%;background:radial-gradient(circle,rgba(255,178,193,.52) 0,rgba(238,35,82,.32) 18%,rgba(139,5,43,.18) 46%,transparent 72%);filter:blur(10px);opacity:0;transform:translateX(-50%) scale(.5);animation:ambient-aura 1.8s calc(var(--ambient-delay) + 1.8s) ease-out forwards}
+.ambient-rose--wine .ambient-rose__petals{fill:#720521}.ambient-rose--wine .ambient-rose__petals--middle{fill:#a60b31}.ambient-rose--wine .ambient-rose__petals--inner{fill:#d12b50}
+.ambient-rose--pink .ambient-rose__petals{fill:#851335}.ambient-rose--pink .ambient-rose__petals--middle{fill:#c5335b}.ambient-rose--pink .ambient-rose__petals--inner{fill:#ed7892}
+@keyframes ambient-stem-grow{to{transform:scaleY(1)}}
+@keyframes ambient-leaf-open{from{opacity:0;transform:scale(.1) rotate(-22deg)}to{opacity:.78;transform:scale(1) rotate(0)}}
+@keyframes ambient-petal-open{0%{opacity:0;transform:translateY(20px) scale(.14,.2)}45%{opacity:.75}75%{transform:translateY(-1px) scale(1.04)}100%{opacity:1;transform:none}}
+@keyframes ambient-aura{65%{opacity:1;transform:translateX(-50%) scale(1.08)}to{opacity:.82;transform:translateX(-50%) scale(1)}}
+@keyframes ambient-sway{from{translate:-2px 0}to{translate:3px 0}}
+@keyframes ambient-bloom-sway{from{transform:rotate(-1.3deg)}to{transform:rotate(1.3deg)}}
+@media(max-width:760px){.ambient-garden{top:48px}.ambient-rose:nth-child(3),.ambient-rose:nth-child(7){display:none}.ambient-rose{opacity:calc(var(--ambient-opacity) * .82)}}
+@media(max-width:520px){
+  .ambient-garden{inset:58px 0 auto;height:520px;mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 82%,transparent)}
+  .ambient-rose:nth-child(2),.ambient-rose:nth-child(3),.ambient-rose:nth-child(4),.ambient-rose:nth-child(7){display:none}
+  .ambient-rose{opacity:calc(var(--ambient-opacity) * .9)}
+  .ambient-rose:nth-child(1){--ambient-x:5%;--ambient-bottom:42px;--ambient-scale:.48;--ambient-stem-height:210px}
+  .ambient-rose:nth-child(5){--ambient-x:82%;--ambient-bottom:145px;--ambient-scale:.34;--ambient-stem-height:145px}
+  .ambient-rose:nth-child(6){--ambient-x:96%;--ambient-bottom:20px;--ambient-scale:.5;--ambient-stem-height:225px}
+  .ambient-rose__petals{filter:drop-shadow(0 0 3px rgba(255,133,155,.72)) drop-shadow(0 0 7px rgba(235,20,69,.5))}
+}
+@media(prefers-reduced-motion:reduce){.ambient-rose,.ambient-rose__bloom{animation:none}.ambient-rose__stem{transform:scaleY(1);animation:none}.ambient-rose__leaf,.ambient-rose__petals{opacity:1;transform:none;animation:none}.ambient-rose__aura{opacity:.55;transform:translateX(-50%) scale(1);animation:none}}

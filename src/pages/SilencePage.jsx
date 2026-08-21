@@ -116,6 +116,41 @@ function RoseBloom() {
   );
 }
 
+function AmbientRose({ x, bottom, scale, delay, opacity, blur = 0, stemHeight, tone = "crimson", distant = false }) {
+  const style = {
+    "--ambient-x": `${x}%`,
+    "--ambient-bottom": `${bottom}px`,
+    "--ambient-scale": scale,
+    "--ambient-delay": `${delay}s`,
+    "--ambient-opacity": opacity,
+    "--ambient-blur": `${blur}px`,
+    "--ambient-stem-height": `${stemHeight}px`,
+  };
+
+  return (
+    <div className={`ambient-rose ambient-rose--${tone}${distant ? " ambient-rose--distant" : ""}`} style={style} aria-hidden="true">
+      <span className="ambient-rose__aura" />
+      <span className="ambient-rose__stem">
+        <i className="ambient-rose__leaf ambient-rose__leaf--left" />
+        <i className="ambient-rose__leaf ambient-rose__leaf--right" />
+      </span>
+      <svg className="ambient-rose__bloom" viewBox="0 0 100 84">
+        <g className="ambient-rose__petals ambient-rose__petals--outer">
+          <path d="M50 75C29 80 8 66 7 45c12 3 24 9 33 18C28 49 29 28 48 14c4 13 5 27 2 41 4-22 19-38 39-42 3 21-8 39-26 49 10-8 22-13 34-13-4 20-23 32-47 26Z" />
+        </g>
+        <g className="ambient-rose__petals ambient-rose__petals--middle">
+          <path d="M50 69C34 68 21 57 23 42c10 3 18 9 24 18-6-13-2-29 11-38 5 10 5 22 1 33 7-12 18-19 31-18-1 16-15 29-40 32Z" />
+          <path d="M49 68C39 60 36 47 43 37c7 5 11 12 11 21 2-11 10-19 21-21 3 13-5 25-26 31Z" />
+        </g>
+        <g className="ambient-rose__petals ambient-rose__petals--inner">
+          <path d="M49 61c-8-8-7-19 1-25 5 5 7 11 5 17 3-7 9-11 16-10 0 10-8 18-22 18Z" />
+          <path d="M52 54c-5-5-3-12 3-15 5 5 4 11-3 15Z" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
 export function SilencePage() {
   const [replay, setReplay] = useState(0);
 
@@ -134,10 +169,22 @@ export function SilencePage() {
     id: index, left: `${10 + ((index * 29) % 80)}%`, delay: `${5.1 + (index % 5) * .85}s`,
     drift: `${-45 + ((index * 31) % 90)}px`,
   })), []);
+  const ambientRoses = useMemo(() => [
+    { x: 8, bottom: 70, scale: .64, delay: .45, opacity: .38, blur: .2, stemHeight: 250, tone: "wine" },
+    { x: 22, bottom: 22, scale: .43, delay: 1.2, opacity: .25, blur: 1.1, stemHeight: 205, tone: "pink", distant: true },
+    { x: 35, bottom: 245, scale: .32, delay: .82, opacity: .19, blur: 1.8, stemHeight: 130, tone: "crimson", distant: true },
+    { x: 65, bottom: 255, scale: .3, delay: 1.45, opacity: .18, blur: 2.2, stemHeight: 125, tone: "pink", distant: true },
+    { x: 78, bottom: 35, scale: .5, delay: .95, opacity: .3, blur: .6, stemHeight: 225, tone: "wine" },
+    { x: 92, bottom: 92, scale: .69, delay: .62, opacity: .35, blur: .4, stemHeight: 275, tone: "crimson" },
+    { x: 52, bottom: 330, scale: .25, delay: 1.7, opacity: .15, blur: 2.8, stemHeight: 105, tone: "wine", distant: true },
+  ], []);
 
   return (
     <main className="silence-page" key={replay}>
       <div className="silence-glow" aria-hidden="true" />
+      <div className="ambient-garden" aria-hidden="true">
+        {ambientRoses.map((rose, index) => <AmbientRose key={index} {...rose} />)}
+      </div>
       <div className="silence-stars" aria-hidden="true">
         {sparks.map((spark) => <i key={spark.id} style={{ left: spark.left, animationDelay: spark.delay, animationDuration: spark.duration, width: spark.size, height: spark.size }} />)}
       </div>
