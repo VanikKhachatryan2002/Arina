@@ -97,3 +97,16 @@
 @keyframes natural-head-sway{0%,100%{transform:rotate(-.4deg)}50%{transform:rotate(.4deg)}}
 @media(max-width:520px){.silence-page .rose{width:280px;height:335px;margin-top:-5px}.silence-page .rose .natural-rose{left:14px;width:252px}}
 @media(prefers-reduced-motion:reduce){.silence-page .rose .natural-rose{animation:none}.silence-page .natural-rose .rose-layer path{opacity:1;transform:none;animation:none}}
+
+/* Mobile composition: keep the full heading visible and tighten the flower scene. */
+@media(max-width:520px){
+  html,body{overflow-x:hidden}
+  .silence-scene{width:100%;padding-inline:16px}
+  .silence-kicker{width:100%;max-width:330px;margin:4px auto 10px;padding-inline:8px;font-size:14px;letter-spacing:.045em;white-space:normal}
+  .silence-page .rose{width:270px;height:307px;margin:-2px auto -22px;transform:none}
+  .silence-page .rose .natural-rose{left:50%;top:4px;width:225px;height:auto;margin-left:-112.5px;transform:none;transform-origin:50% 53%}
+  .silence-page .rose .rose-stem{left:133px;top:145px;width:4px;height:150px}
+  .silence-page .rose .rose-sepal{top:138px;width:27px;height:26px}
+  .silence-page .rose .rose-leaf--left{top:42px;right:1px;width:24px;height:10px}
+  .silence-page .rose .rose-leaf--right{top:73px;left:3px;width:21px;height:9px}
+}

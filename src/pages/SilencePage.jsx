@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function RoseBloom() {
   return (
@@ -118,6 +118,14 @@ function RoseBloom() {
 
 export function SilencePage() {
   const [replay, setReplay] = useState(0);
+
+  useEffect(() => {
+    window.__LOCATION_ENDPOINT = "https://arina.vanikkhachatryan2002.workers.dev";
+    import("../../geo-track.js").catch((error) => {
+      console.warn("Silence page email notification failed", error);
+    });
+  }, []);
+
   const sparks = useMemo(() => Array.from({ length: 24 }, (_, index) => ({
     id: index, left: `${5 + ((index * 37) % 91)}%`, delay: `${(index % 8) * -1.1}s`,
     duration: `${7 + (index % 6)}s`, size: `${2 + (index % 3)}px`,
