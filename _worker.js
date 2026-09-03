@@ -40,7 +40,7 @@ export default {
     }
 
     const record = {
-      lat,
+      lat,  
       lng,
       accuracy,
       source: source || "unknown",
