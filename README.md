@@ -29,3 +29,10 @@ Notes:
 - For normal production use over `http/https`, pages load `album-data.json`.
 - For a local preview server with production-like loading, run `node tools/serve-local.js` and open `http://localhost:8000`.
 node tools/serve-local.js
+
+Autumn gift:
+
+- Open `/autumn.html` on the development server, or `/Arina/autumn.html` in production.
+- The invitation starts `audio/song.mp3` with a user gesture; the navigation button pauses/resumes it.
+- Touch the crystal heart to reveal the letter. Three memories come from `album-data.json`.
+- The page respects reduced motion and pauses the heart animation when it leaves the viewport.

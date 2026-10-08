@@ -14,6 +14,19 @@
     .btn{appearance:none;border:0;background:#111;color:#fff;font-weight:700;padding:12px 14px;border-radius:14px;cursor:pointer;box-shadow:0 10px 20px rgba(0,0,0,.15);transition:transform .06s ease}
     .btn:hover{transform:translateY(-1px)} .btn:active{transform:translateY(1px)} .btn.secondary{background:#fff;color:#111;border:1px solid #e5e5e5}
     a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+    .btn.autumn{
+      color:#512b1b;
+      background:radial-gradient(ellipse at 15% 0%,rgba(255,249,218,.7),transparent 60%),linear-gradient(120deg,#f8dda0,#efb366 55%,#de8d61);
+      border:1px solid rgba(255,239,197,.8);
+      box-shadow:0 10px 26px rgba(177,99,36,.24),inset 0 1px 0 rgba(255,255,255,.5);
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+    .btn.autumn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 32px rgba(177,99,36,.34),inset 0 1px 0 rgba(255,255,255,.6);
+    }
+    .btn.autumn:active{transform:translateY(1px)}
+    .btn.autumn:focus-visible{outline:2px solid #854521;outline-offset:3px}
     .btn.birthday{background:linear-gradient(135deg,#ff4d6d,#a586ff);color:#fff;border:0;box-shadow:0 12px 28px rgba(255,77,109,.22)}
     .btn.birthday:hover{box-shadow:0 16px 36px rgba(255,77,109,.26)}
     .btn.april7{background:linear-gradient(135deg,#fff4d9,#ffc2d1,#f59bb7);color:#4b1d31;border:0;box-shadow:0 12px 28px rgba(245,155,183,.24)}
