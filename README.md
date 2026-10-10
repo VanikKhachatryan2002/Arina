@@ -36,3 +36,10 @@ Autumn gift:
 - The invitation starts `audio/song.mp3` with a user gesture; the navigation button pauses/resumes it.
 - Touch the crystal heart to reveal the letter. Three memories come from `album-data.json`.
 - The page respects reduced motion and pauses the heart animation when it leaves the viewport.
+
+Particle love gift:
+
+- Open `/sparks.html` in development or `/Arina/sparks.html` in production.
+- The invitation starts `audio/solamente-tu.mp3`; the music button pauses/resumes it.
+- Original kiss outlines in `src/animations/kissPaths.js` guide the gathering particles. Replay restarts the animation; the letter opens separately.
+- Reduced motion shows the completed line drawing and promise immediately.

@@ -657,3 +657,8 @@
 @media (max-width:520px){
   .ny-modal__card{ max-height: 84vh; padding: 16px 14px; }
 }
+
+.btn.sparks{color:#512b40;background:radial-gradient(ellipse at 15% 0%,rgba(255,239,231,.7),transparent 60%),linear-gradient(120deg,#f4c6d8,#ddb3d8 52%,#ebc294);border:1px solid rgba(255,232,239,.85);box-shadow:0 10px 26px rgba(161,93,128,.24),inset 0 1px 0 rgba(255,255,255,.55);transition:transform .2s ease,box-shadow .2s ease}
+.btn.sparks:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(161,93,128,.34),inset 0 1px 0 rgba(255,255,255,.65)}
+.btn.sparks:active{transform:translateY(1px)}
+.btn.sparks:focus-visible{outline:2px solid #87435f;outline-offset:3px}
