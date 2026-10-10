@@ -41,5 +41,5 @@ Particle love gift:
 
 - Open `/sparks.html` in development or `/Arina/sparks.html` in production.
 - The invitation starts `audio/solamente-tu.mp3`; the music button pauses/resumes it.
-- Original kiss outlines in `src/animations/kissPaths.js` guide the gathering particles. Replay restarts the animation; the letter opens separately.
+- The portrait outline in `assets/kiss-portrait-contours.png` guides the gathering particles. Replay restarts the animation; the letter opens separately.
 - Reduced motion shows the completed line drawing and promise immediately.
